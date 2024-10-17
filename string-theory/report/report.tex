@@ -1,0 +1,237 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left= 2.5cm, right= 2.5cm, bottom= 2.5cm, top= 2.5cm]{geometry}
+\setlength{\parindent}{0.5in}
+% \setlength{\parskip}{8pt}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{mathrsfs}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{braket}
+\usepackage[font=small, labelfont=bf]{caption}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\xdot}{\dot{x}}
+\newcommand{\ydot}{\dot{y}}
+\newcommand{\lagrangian}{\mathcal{L}}
+\newcommand{\QED}{\rightline{\emph{Quod erat demonstrandum.}}}
+\newcommand{\xhat}{\mathbf{\hat{x}}}
+\newcommand{\yhat}{\mathbf{\hat{y}}}
+\newcommand{\zhat}{\mathbf{\hat{z}}}
+\newcommand{\thetahat}{\mathbf{\hat{\theta}}}
+\newcommand{\phihat}{\mathbf{\hat{\phi}}}
+\newcommand{\rhat}{\mathbf{\hat{r}}}
+\newcommand{\shat}{\mathbf{\hat{s}}}
+\newcommand{\ehat}{\mathbf{\hat{e}}}
+\def\rcurs{{\mbox{$\resizebox{.16in}{.08in}{\includegraphics{images/ScriptR.pdf}}$}}}
+\def\brcurs{{\mbox{$\resizebox{.16in}{.08in}{\includegraphics{images/BoldR.pdf}}$}}}
+\def\hrcurs{{\mbox{$\hat \brcurs$}}}
+
+\allowdisplaybreaks
+
+\title{PHY472: Intro to String Theory - Final Report}
+\author{Harsh Jaluka}
+\date{\today}
+
+\begin{document}
+
+\begin{titlepage}
+\maketitle 
+\end{titlepage}
+
+\newpage 
+\section*{Chapter 6: Relativistic strings}
+We begin this chapter with the goal of writing an action for the classical relativistic string. Analogous to the point particle tracing out a worldline in spacetime, a string traces out a surface -- \textit{the world-sheet}. Continuing the analogy, we want the action of the string to be the \textit{proper area} of the worldsheet, similar to how the point particle action was the proper length of the worldline. 
+
+The world-sheet is parameterized by $\tau$ and $\sigma$ and the ambient space in which the world-sheet lives is called the \textit{target space}, parameterized by the $d$-dimensional \textit{string coordinates} $X^\mu(\tau, \sigma)$. 
+% We can move back and forth between worldsheet coordinates and target space coordinates as 
+% \begin{align*}
+%     \vec{x}(\xi^1, \xi^2) = \left({x^1}(\xi^1, \xi^2) , {x^2}(\xi^1, \xi^2), {x^3}(\xi^1, \xi^2)\right) \tag{6.1}
+% \end{align*}
+The goal is to calculate the area of a small rectangle on the world-sheet, in the target space. In general, a square in a lower dimensional space (the world-sheet) is a parallelogram in the space its embedded in (the target space). We get the following expression for the proper area functional
+\begin{align*}
+    A = \int  d \tau d\sigma \sqrt{\left( \frac{\partial X}{\partial \tau} \cdot \frac{\partial X}{\partial \sigma} \right)^2 - \left( \frac{\partial X}{\partial \tau} \right)^2 \left( \cdot \frac{\partial X}{\partial \sigma}\right)^2 }\tag{6.33}
+\end{align*}
+With the proper area functional well-defined, we introduce the ``Nambu-Goto'' action proportional to the proper area with suitable constants added to have the units of action 
+\begin{align*}
+    S = - \frac{T_0}{c} \int_{\tau_i}^{\tau_f } d\tau \int_0^{\sigma_1} d\sigma \sqrt{(\dot{X} \cdot X')^2 - (\dot{X})^2 (X')^2} \tag{6.39}
+\end{align*}
+% \begin{align*}
+%     dA = d \xi^1 d\xi^2 \sqrt{\left( \frac{\partial \vec{x}}{\partial \xi^1} \cdot \frac{\partial \vec{x}}{\partial \xi^2} \right) \left( \frac{\partial \vec{x}}{\partial \xi^2} \cdot \frac{\partial \vec{x}}{\partial \xi^2}\right) - \left( \frac{\partial \vec{x}}{\partial \xi^1} \cdot \frac{\partial \vec{x}}{\partial \xi^2}\right)^2} \tag{6.5}
+% \end{align*}
+
+Defining the induced metric $\gamma_{\alpha \beta}$, we can rewrite the Nambu-Goto action in a manifestly reparameterization invariant form: 
+% $g_{ij}(\xi) = \frac{\partial \vec{x}}{\partial \xi^i} \cdot \frac{\partial \vec{x}}{\partial \xi^j}$
+% , we can rewrite the area functional as 
+% \begin{align*}
+%     A = \int d\xi^1 d\xi^2 \sqrt{g}, ~~~~~ g = \det(g_{ij}) \tag{6.17, 6.16}
+% \end{align*}
+% This expression is reparameterization invariant, as we would like; a (cumbersome) calculation in Section 6.2 of Zwiebach proves that ths is indeed the case. 
+% Upgrading to spacetime surfaces instead of spatial surfaces, we find that we only make the changes $\xi^1 \to \tau, \xi^2 \to \sigma$ and $\vec{x} \to X^\mu$, where, notably, $X^\mu$ is $d$-dimensional. The new area functional differs from the previous one only in that it has swapped terms in the square root due to a change in the metric (from Galilean to Minkowski).
+\begin{align*}
+    \gamma_{\alpha\beta} = \begin{bmatrix}
+        (\dot{X})^2 & \dot{X} \cdot X' \\
+        \dot{X}\cdot X' & (X')^2 
+    \end{bmatrix} \implies 
+    S = -\frac{T_0}{c} \int d\tau d\sigma \sqrt{-\gamma}, ~~~ \gamma = \det(\gamma_{\alpha\beta}) \tag{6.43, 6.44}
+\end{align*} 
+As is standard, we define the conjugate momenta $\mathcal{P}_\mu$ where the lagrangian is just the argument of the integral in Eq. (6.39). The Euler-Lagrange equations then give us the equations of motion
+\begin{align*}
+    \mathcal{P}^\tau_\mu = \frac{\partial \lagrangian}{\partial \dot{X}^\mu}, ~~~~~\mathcal{P}^\sigma_\mu = \frac{\partial \lagrangian}{\partial {X^\mu}'} \implies \frac{\partial \mathcal{P}^\tau_\mu}{\partial \tau} + \frac{\partial \mathcal{P}^\sigma_\mu}{\partial \sigma} = 0 \tag{6.49, 6.50, 6.53}
+\end{align*}
+As in the nonrelativistic case, there are two boundary conditions one can impose at the endpoints $\sigma^*$; the Dirichlet boundary condition (6.55) and the free endpoint condition (6.56)
+\begin{align*}
+    \frac{\partial X^\mu }{\partial \tau} (\tau, \sigma^*) = 0, \mu \neq 0, ~~~~~~ \mathcal{P}^\sigma_\mu(\tau, \sigma^*)= 0 \tag{6.55, 6.56}
+\end{align*}
+The Dirichlet boundary conditions define D-branes, the spaces in which the endpoints live. A D$p$-brane is an object with $p$ spatial dimensions. The static gauge is a partial parameterization on the world-sheet with $\sigma \in [0,\sigma_1]$ and $\sigma = \sigma + \sigma_c$ for a closed string with circumference $\sigma_c$ and
+\begin{align*}
+    X^\mu(\tau, \sigma) = X^\mu(t, \sigma) = \{ ct, \vec{X}(t, \sigma)\} 
+\end{align*}
+There is a reparameterization invariant \textit{tranverse} velocity that can be defined on the string. Using a parameter $s$ that measures length along the string, we define $\vec{v}_\perp$ and rewrite the action as
+\begin{align*}
+    \vec{v}_\perp = \partial_t \vec{X} - (\partial_t \vec{X} \cdot \partial_s \vec{X}) \partial_s \vec{X} \implies S = -T_0 \int dt \int_0^{\sigma_1} d\sigma \left(\frac{ds }{d\sigma} \right) \sqrt{1 - \frac{v_\perp^2}{c^2}} \tag{6.82, 6.88}
+\end{align*}
+Finally, we can show that open string endpoints move with the speed of light, transversely to the string. 
+
+\newpage 
+\section*{Chapter 7: String parameterization and classical motion}
+Having partially parameterized the worldsheet with the static gauge, we move on to finding a useful $\sigma$ parameterization. We can pick a $\sigma$ parameterization of the string at $t = 0$ and evolve time to obtain lines of constant $\sigma_0$. In this parameterization, we obtain 
+\begin{align*}
+    \frac{\partial \vec{X}}{\partial \sigma} \cdot \frac{\partial \vec{X}}{\partial t} = 0, ~~~~~ \vec{v}_\perp = \frac{\partial \vec{X}}{\partial t} \tag{7.1}
+\end{align*}
+With this $\sigma$ parameterization, the $\mu= 0$ equation of motion gives 
+\begin{align*}
+    \frac{T_0 ds }{\sqrt{1 - v_\perp^2/ c^2}} = const.  \tag{7.8}
+\end{align*}
+Indeed, we find that this is the expression for the string energy. The spatial equations of motion give 
+\begin{align*}
+    \frac{T_0}{c^2} \frac{1}{\sqrt{1 - \frac{v_\perp^2}{c^2}}} \frac{\partial \vec{v}_\perp}{\partial t} = \frac{\partial }{\partial s} \left[T_0 \sqrt{1 - \frac{v_\perp^2}{c^2}} \frac{\partial \vec{X}}{\partial s} \right]  \tag{7.15, 7.14}
+\end{align*} 
+which resemble the equations of motion of a classical nonrelativistic string. With a further choice of $\sigma$ parameterization of the string at $t=0$, 
+\begin{align*}
+    \left( \frac{\partial \vec{X}}{\partial \sigma} \right)^2 + \frac{1}{c^2}\left( \frac{\partial \vec{X}}{\partial t}\right)^2 = 1 \tag{7.28}
+\end{align*}
+we can recover the wave equation, with Neumann boundary conditions
+\begin{align*}
+    \frac{\partial^2 \vec{X}}{\partial \sigma^2} - \frac{1}{c^2}\frac{\partial^2 \vec{X}}{\partial t^2}= 0, ~~ \frac{\partial \vec{X}}{\partial \sigma} \bigg|_{\sigma = 0} = \frac{\partial \vec{X}}{\partial \sigma} \bigg|_{\sigma = \sigma_1} = 0 \tag{7.26, 7.29}
+\end{align*}
+and the following simplified expressions for the conjugate momenta 
+\begin{align*}
+    \mathcal{P}^{\tau \mu} = \frac{T_0}{c^2} \frac{\partial X^\mu}{\partial t}, ~~~~~ \mathcal{P}^{\sigma \mu} = - T_0 \frac{\partial X^\mu }{\partial \sigma} \tag{7.31, 7.32}
+\end{align*}
+The general solution of the open string equations of motion with free endpoints is then given by 
+\begin{align*}
+    \vec{X}(t, \sigma) = \frac{1}{2} (\vec{F}(ct + \sigma) + \vec{F}(ct - \sigma)), ~~ \sigma \in [0, \sigma_1] \tag{7.47}
+\end{align*} 
+with $\sigma_1 = E/T_0$ where $E$ is the energy of the string and $\vec{F}$ satisfies the conditions
+\begin{align*}
+    \left| \frac{d\vec{F}(u)}{du} \right|^2 = 1, ~~~~ \vec{F}(u + 2\sigma_1) = \vec{F}(u) + 2\sigma_1 \frac{\vec{v}_0}{c} \tag{7.48}
+\end{align*}
+Closed strings satisfy similar solutions and similar conditions, with 
+\begin{align*}
+    \vec{X}(t, \sigma) &= \frac{1}{2}(\vec{F}(ct + \sigma) + \vec{G}(ct - \sigma)) \tag{7.65} \\
+    |\vec{F}'(u)|^2 = |\vec{G}'(v)|^2 = 1, ~&~~ \vec{F}(u + \sigma_1) - \vec{F}(u) = \vec{G}(v) - \vec{G}(v - \sigma_1) \tag{7.70, 7.74}
+\end{align*}
+The chapter ends with an application of these classical relativistic strings to cosmic strings, strings from the early universe that have expanded to become very large, and one possible test of string theory. 
+\newpage 
+\section*{Chapter 8: World-sheet currents}
+Recall that in classical field theory with fields, $j^\alpha_i$ is called a conserved current if
+\begin{align*}
+    \partial_\alpha j^\alpha_i = 0 \tag{8.23}
+\end{align*}
+with corresponding conserved charges, satisfying
+\begin{align*}
+    Q_i = \int d \xi^1 \cdots d\xi^k j^0_i, ~~~ \frac{dQ_i}{d\xi^0} = 0 \tag{8.25, 8.26}
+\end{align*}
+We want to find conserved currents on the world-sheet. Our lagrangian is the Nambu-Goto lagrangian in (6.39), from which we obtain 
+\begin{align*}
+    (j^0_\mu, j^1_\mu) = (\mathcal{P}^\tau_\mu, \mathcal{P}^\sigma_\mu) \tag{8.34}
+\end{align*}
+but since the equation for current conservation is now given by 
+\begin{align*}
+    \partial_\alpha \mathcal{P}^\alpha_\mu = \frac{\partial \mathcal{P}^\tau_\mu}{\partial \tau} + \frac{\partial \mathcal{P}^\sigma_\mu}{\partial \sigma} = 0 \tag{8.35}
+\end{align*}
+we have a new interpretation for the equation of motion of a relativistic string. The corresponding conserved charge is 
+\begin{align*}
+    p_\mu(\tau) = \int_0^{\sigma_1} \mathcal{P}^\tau_\mu (\tau, \sigma) d\sigma \tag{8.36}
+\end{align*}
+We can write this as an integral over any curve as 
+\begin{align*}
+    p_\mu = \int_\gamma (\mathcal{P}^\tau_\mu d\sigma - \mathcal{P}^\sigma_\mu d\tau) \tag{8.49}
+\end{align*}
+The conserved (antisymmetric) currents corresponding to Lorentz invariance are found to be 
+\begin{align*}
+    \mathcal{M}^\alpha_{\mu\nu} = X_\mu \mathcal{P}^\alpha_\nu - X_\nu \mathcal{P}^\alpha_\mu \tag{8.60}
+\end{align*}
+with conserved (antisymmetric) charges 
+\begin{align*}
+    M_{\mu\nu} = \int_\gamma (\mathcal{M}^\tau_{\mu\nu}d\sigma - \mathcal{M}^\sigma_{\mu\nu} d\tau) \tag{8.63}
+\end{align*}
+Finally, the chapter ends with a calculation for the slope parameter $\alpha'$, deriving the following relations 
+\begin{align*}
+    \alpha' = \frac{1}{2\pi T_0 \hbar c}, ~~~~ \ell_s = \hbar c \sqrt{\alpha '} \tag{8.76, 8.78}
+\end{align*}
+The parameter has an interesting physical interpretation; if we consider a rigidly rotating open string, $\alpha'$ is the proportionality constant that relates the angular momentum $J$, measured in $\hbar$ units, to its energy $E$ 
+\begin{align*}
+    \frac{J}{\hbar} = \alpha' E^2 \tag{8.69}
+\end{align*}
+
+\newpage 
+\section*{Chapter 9: Light-cone relativistic strings}
+One of the most interesting results in this chapter shows that the classical string mass is a real number. 
+\begin{align*}
+    M^2 = \frac{1}{\alpha'} \sum_{n=1}^\infty n \alpha_n^{I*} \alpha_n^I 
+\end{align*}
+While this may be the obvious result, it turns out to be hard to obtain without using the light-cone gauge. 
+
+\newpage 
+\section*{Chapter 12: Relativistic quantum open strings}
+The goal of this chapter is to quantize the classical theory we have for the relativistic open string. As a start, we upgrade the following variables to (Heisenberg) operators (with the corresponding Schrodinger ones only differing in the lack of dependence on $\tau$)
+\begin{align*}
+    X^I(\tau, \sigma), ~~x^-_0(\tau), ~~\mathcal{P}^{tI}(\tau, \sigma), ~~p^+(\tau) \tag{12.5} 
+\end{align*}
+We impose the following commutation relations, with all remaining combinations set to 0 
+\begin{align*}
+    [X^I(\sigma), \mathcal{P}^{tJ}(\sigma')] &= i \eta^{IJ} \delta(\sigma - \sigma') \tag{12.6}\\
+    [x_0^-, p^+] &= -i \tag{12.8} 
+\end{align*} 
+Since we know that $X^+ = 2\alpha' p^+ \tau$, we guess the (almost correct) Hamiltonian
+\begin{align*}
+    H &= 2\alpha' p^+ p^- = 2\alpha' p^+ \int_0^\pi d\sigma \mathcal{P}^{\tau-} = L_0^\perp \tag{12.14, 9.78, 12.16}\\
+    &= \pi \alpha' \int_0^\pi d\sigma \left(\mathcal{P}^{tI} (\tau, \sigma) \mathcal{P}^{tI}(\tau, \sigma) + \frac{X^{I'}(\tau, \sigma) X^{I'}(\tau, \sigma)}{(2\pi \alpha')^2}\right) \tag{12.15} 
+\end{align*}
+We derive the equations of motion 
+\begin{align*}
+    i \dot{\xi}(\tau, \sigma) = [\xi(\tau, \sigma), H(\tau)] \implies i \dot{X^I}(\tau, \sigma) &= [X^I(\tau, \sigma), H(\tau)]  = 2\pi \alpha' \mathcal{P}^{\tau I}(\tau, \sigma) \tag{12.17, 12.21}
+\end{align*}
+which coincide with the classical equations of motion! To discretize these commutation relations, we recall the classical mode expansion 
+\begin{align*}
+    (\dot{X}^I \pm {X^I}')(\tau, \sigma) = \sqrt{2\alpha' } \sum_{n \in \mathbb{Z}} \alpha_n^I e^{-in(\tau \pm \sigma)} \tag{9.74, 12.33}
+\end{align*}
+which allows us to define creation and annihilation operators satisfying 
+\begin{align*}
+    [\alpha_m^I, \alpha_n^J] = m \eta^{IJ} \delta_{m+n, 0} \tag{12.45}
+\end{align*}
+With normal-ordering and creation and annihilation operators, we define the Virasoro operators 
+\begin{align*}
+    L_0^\perp &= \frac{1}{2}\alpha_0^I \alpha_0^I + \sum_{p=1}^\infty \alpha_{-p}^I \alpha_p^I = \alpha' p^I p^I + \sum_{p=1}^\infty pa_p^{I\dagger} a_p^I \tag{12.105}
+\end{align*}
+Taking inspiration from the classical Lorentz generators in terms of oscillation modes 
+\begin{align*}
+    M^{\mu\nu} = x^\mu_0 p^\nu - x_0^\nu p^\mu - i \sum_{n=1}^\infty \frac{1}{n}(\alpha_{-n}^\mu \alpha_n^\nu - \alpha_{-n}^\nu \alpha_{n}^\mu ) \tag{12.147}
+\end{align*}
+we guess a quantum Lorentz generator and obtain 
+\begin{align*}
+    [M^{-I}, M^{-J}] = &- \frac{1}{\alpha' (p^+)^2} \sum_{m=1}^\infty (\alpha_{-m}^I \alpha_m^J - \alpha_{-m}^J \alpha_m^I ) \cdot \left[ m \left( 1 - \frac{1}{24} (D-2) \right) + \frac{1}{m}\left( \frac{1}{24}(D-2) + a \right) \right] \tag{12.152}
+\end{align*}
+To get that this quantity is 0, we require $D = 26$ and $a = -1$, giving us the familiar result of 26 dimensions of spacetime in string theory and the correct Hamiltonian $H = L_0^\perp -1$. The $a=-1$ shift also gives rise to the negative mass tachyon states that represent an instability in string theory!
+\end{document}  
