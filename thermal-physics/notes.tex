@@ -1,0 +1,558 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{8pt}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{mathrsfs}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{hyperref}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\QED}{\rightline{\emph{Quod erat demonstrandum.}}}
+\newcommand{\xhat}{\mathbf{\hat{x}}}
+\newcommand{\yhat}{\mathbf{\hat{y}}}
+\newcommand{\zhat}{\mathbf{\hat{z}}}
+\allowdisplaybreaks
+
+\title{PHY252: Thermal Physics - Course Notes}
+\author{Harsh Jaluka}
+\date{Feb 2022}
+
+\begin{document}
+
+\begin{titlepage}
+\maketitle 
+\end{titlepage}
+
+\newpage 
+\tableofcontents
+
+\newpage
+\section{Introduction to thermal physics}
+Thermal physics deals with collections of large numbers of particles -- typically $10^{23}$ or so. We look for the `universal behaviors' of these systems of many particles, without having to know detailed information about their internal structures. These results comprise a subject called \textbf{thermodynamics}; the explanation of thermodynamics, taking into account the quantum behaviour of individual atoms and laws of statistics that allow us to generalise to systems with large numbers of atoms, comprises another subject called \textbf{statistical mechanics}. 
+
+\section{Thermodynamic equilibrium}
+A system can exchange various quantities within parts of itself; the most common of these are energy, volume and particles. We say that an object is in thermodynamic equilibrium when it is in thermal, mechanical and diffusive equilibrium: 
+\begin{enumerate}
+    \item Thermal (energy): when two objects have been in contact `long enough' to have the same `temperature'
+    \item Mechanical (volume): large-scale motions can take place but no longer do
+    \item Diffusive (particles): molecules of each substance are free to move around but no longer have any tendency to move one way or another
+\end{enumerate}
+Equilibrium is defined as the point where the average/net flow of exchanged quantity is zero (i.e. everything is balanced out).
+
+The relaxation time is the time required for a system to come to equilibrium when left to its own (usually refers to thermal, but can refer to others as well). 
+
+If a gas is left on its own for a sufficiently long time, it reaches a state of thermodynamic equilibrium: 
+\begin{itemize}
+    \item Uniform (same density, pressure and temperature throughout its volume) 
+    \item Pressure and temperature constant with time
+    \item No microscopic currents or winds (individual particles are still moving around, but with no preferred direction) 
+\end{itemize}
+There are 4 different mechanisms that lead to thermodynamic equilibrium for gases: 
+\begin{itemize}
+    \item diffusion: molecules move from area of higher concentration to lower concentration (?)
+    \item convection: bulk motion of fluid, usually driven by tendency of warmer material to expand and rise
+    \item conduction: molecular collisions in fluids, lattice vibrations in solids and conduction electrons in metals
+    \item radiation: electromagnetic radiation (photons) carries energy from warm body to cool body. Temperature equalize when each body is emitting the same amount of energy from radiation. 
+\end{itemize}
+
+The study of equilibration rates of system is known as physical kinetics but it will not be a subject of major concern in this course. 
+
+\section{Ideal classical gas}
+Any gas sufficiently \textbf{hot} and \textbf{dilute} obeys the Ideal Gas Law:
+\begin{align*}
+    PV = kNT = nRT
+\end{align*}
+The variables are defined as follows:
+\begin{itemize}
+    \item Pressue $P$ = force per unit area [Newton/m$^2$] (Pa)
+    \item Volume $V$ = [m$^3$]
+    \item Boltzmann constant $k = [1.381 \times 10^{-23}$ Joules/Kelvin]
+    \item Number of particles $N$
+    \item Absolute temperature $T$ = [Kelvin]
+    \item Number of moles $n$ 
+    \item Universal gas constant $R$ = 8.31 [Joules/(moles x Kelvin)]
+\end{itemize}
+
+
+\section{Equipartition of energy}
+\textbf{References: Lecture 2 Slides} \bigskip
+
+\subsection{Degrees of freedom}
+A quadratic degree of freedom refers to any form of energy which is proportional to the square of a coordinate or velocity component.
+\begin{itemize}
+    \item kinetic energy of translational motion: $\frac{1}{2} mv_x^2$
+    \item kinetic energy of rotational motion: $\frac{1}{2}I w_x^2$
+    \item elastic potential energy: $\frac{1}{2}k_s x^2$
+    \item vibrational counts as 2 dof's: kinetic + potential 
+\end{itemize}
+Vibrational and rotational dof's `freeze-out' are lower temperatures. This is a quantum-mechanical phenomenon. In classical mechanics, we can have arbitrarily small amounts of energy and equipartition holds among all dof's at all temperatures. However, in quantum mechanics, angular momentum is quantized in packets of Planck's constant $h$, so minimum rotational energy of molecule $\approx h^2/I = 10^{-20}$ J 
+\begin{itemize}
+\item it requires around 100 k energy to excite rotational states
+\item it requires around 1000 k energy to excite vibrational states
+\end{itemize}
+
+
+
+\subsection{The equipartition theorem}
+
+The average energy of any ``quadratic'' degree of freedom is $\frac{kT}{2}$
+
+Hence, it follows from the theorem that the total thermal energy of a system of $N$ molecules, each with $f$ degrees of freedom is given by 
+\begin{align*}
+    U = Nf\frac{kT}{2}
+\end{align*}
+
+
+\section{Heat and work}
+\textbf{References: Lecture 2 Slides} \bigskip 
+
+\textbf{Definition:} Heat is defined as any spontaneous flow of energy from one object to another, caused by a temperature difference between them. 
+
+\textbf{Definition:} Work is defined as any other transfer of energy into, or out of, a system. For work to be done, some external agent has to actively put energy into, or drain energy from, the system. 
+
+Both heat and work refer to energy in transit: you can say how much heat entered a system or how much work was done on a system, but not how much heat (or work) is in a system. You can say how much energy is in a system. 
+
+
+\section{The first law of thermodynamics and types of processes}
+\textbf{References: Lecture 2, 3 Slides}
+\subsection{The first law of thermodynamics}
+The first law of thermodynamics is an expression of the conservation of energy in thermodynamic equilibrium. It states that 
+\begin{align*}
+    \Delta U = Q + W 
+\end{align*}
+where 
+\begin{itemize}
+    \item $\Delta U$ = energy change of gas
+    \item $Q$ = heat absorbed or lost 
+    \item $W$ = work done on or by the gas 
+    \begin{itemize}
+        \item often split into `work done involving compression/expansion' (a term with $\Delta V$ in it) and `all other work' $W_{other}$, such as electrical current applied 
+    \end{itemize}
+\end{itemize}
+For now, we will assume $W_{other}= 0$. 
+
+\subsection{Quasistatic processes}
+
+A \textbf{quasistatic} process is one in which the expansion/compression is slow enough that equipartition holds at all times. 
+\begin{itemize}
+    \item In reality, many processes are approximately quasistatic
+    \item If the rate of volume change is much less that the rate of equilibration processes, we can make the quasistatic approximation
+\end{itemize}
+Sign convention: work done \textbf{on} gas as it is compressed is positive. Work done \textbf{on} gas as it expands is negative. Work done \textbf{by} gas has the opposite sign of work done on gas. 
+
+Consider a slow-moving piston of area $A$, where gas pressure is $P$. Then, 
+\begin{align*}
+    F_{gas} = P \cdot A \implies W_{gas} = P \cdot \Delta V
+\end{align*}
+If we perform the compression one infinitesimal step at a time, 
+\begin{align*}
+    W &= \lim_{n \to \infty} (- P_1 \delta V_1 - P_2 \delta V_2 - \cdots - P_n \delta V_n) \\
+    &= - \int P(V,T) dV 
+\end{align*}
+
+\subsection{Isothermal processes}
+
+An \textbf{isothermal} process is one in which the temperature stays constant. 
+\begin{itemize}
+    \item \textbf{If a gas is isolated from its environment}, it is impossible for a quasistatic process to be isothermal (compression would have to drive temperature up, expansion down) 
+    \item To keep $T$ constant, energy put into system by compression must have somewhere to go and energy drawn into the system for expansion must come from somewhere
+    \item This can be accomplished by embedding the system in a big `heat sink' that is in thermodynamic equilibrium at $T$
+\end{itemize}
+With $T = $ constant, we can write the work done on the gas as 
+\begin{align*}
+    W &= - \int_{V_i}^{V_f} P(V) dV \\
+    &= -\int_{V_i}^{V_f} \frac{NkT}{V} dV \\
+    &= - NkT \ln{\frac{V_f}{V_i}}
+\end{align*}
+
+An isotherm curve: for a given $T$, plot $P$ as a function of $V$
+
+
+\section{Heat capacities}
+\textbf{References: Lecture 2 Slides}
+
+\subsection{Heat capacity}
+\textbf{Definition:} The heat capacity is defined as the amount of heat needed to raise a system's temperature by 1 kelvin 
+\begin{align*}
+    C = \frac{Q}{\Delta T}
+\end{align*}
+In particular, 
+\begin{itemize}
+\item $C_V$: Volume is fixed while temperature is changing
+\item $C_P$: Pressure is fixed while temperature is changing
+\item specific heat capacity $c$: amount of heat needed to raise the temperature of 1 kg of the system by 1 kelvin
+\end{itemize}
+The formula for $C_v$ and $C_p$ is given by (add derivation later): 
+\begin{align*}
+    C_P = \frac{Nfk}{2} + Nk ~~~~~~~~~~~~ C_V = \frac{Nfk}{2}
+\end{align*}
+
+\subsection{Latent heat}
+\textbf{Definition:} A substance can exist in different forms (e.g. ice, water, steam) and these are called its phases. 
+
+Different phases often have different degrees of freedom. 
+
+\textbf{Definition:} A phase transformation is defined as a discontinuous change in a substance's properties as its environment is changed only infinitesimally, as it goes from one form to another (e.g. melting, boiling). This often involves the freeze-out or activation of some degrees of freedom. 
+
+At a phase transformation, heat can flow into a system without increasing its temperature, which leads to the following (natural) definition for the latent heat. 
+
+\textbf{Definition:} The latent heat of a system is defined as the amount of heat per unit mass required to accomplish the phase transformation. In particular, if $Q$ is the amount of heat required and $m$ is the mass of the substance, then the latent heat $L$ is given by
+\begin{align*}
+    L = \frac{Q}{m}
+\end{align*}
+We assume that the pressure $P$ is constant at 1 atm, with no other work done during the phase transformation. 
+
+\subsection{Enthalpy}
+\textbf{Definition:} Let $U$ be the total energy content of the system, $P$ be the pressure of the environment (constant) and $V$ the volume of the system. Then, the enthalpy $H$ is defined to be 
+\begin{align*}
+    H = U + PV 
+\end{align*}
+Enthalpy avoids keeping track of compression and expansion work and hence is a convenient formalism for constant-pressure processes. One way to think about enthalpy is that it would be the total amount of energy you would need to create the system from scratch or the energy that would be released by the annihilation of such a system. In particular, the $PV$ term is the work done by/on the atmosphere as it collapses/expands when the system is destroyed/created). 
+
+For a system at constant pressure, 
+\begin{align*}
+    \Delta H &= \Delta U + P \Delta V \\
+    &= (Q - P \Delta V + W_{other}) + P \Delta V \\
+    &= Q + W_{other}
+\end{align*}
+$W_{other}$ indicates work other than compression/expansion (e.g. electrical). 
+
+Consider a system whose temperature is changing. In this case, the partial derivative of $H$ with respect to $T$ gives us a quantity we have seen before. 
+\begin{align*}
+    \frac{\partial H}{\partial T} = \frac{\partial (U+PV)}{\partial T} = \frac{\partial U}{\partial T} + P \frac{\partial V}{\partial T} = \frac{\partial U}{\partial T} = C_P 
+\end{align*}
+
+\section{Thermal conduction}
+Thermal conduction is defined as heat transfer by direct contact at the molecular level. It is given by
+\begin{align*}
+    \frac{Q}{\Delta t} &= k_t A \frac{dT}{dx}
+\end{align*}
+
+\section{Macrostate and microstate multiplicities}
+\textbf{References: Lectures 4, 5 Slides, Schroeder 2.1}
+\subsection{Microstates}
+\textbf{Definition:} A microstate describes exactly how the energy is distributed among the $N$ particles in the system.
+\begin{itemize}
+    \item Collisions between particles continually change the microstate (i.e. particles exchange energy with each other), while leaving the macroscopic properties of the system unchanged. 
+    \item We abandon attempts to describe microstates in detail and instead examine average probabilities. This is sufficient to describe known phenomena and make predictions. 
+\end{itemize}
+
+All thermodynamic and statistical mechanics rely on one fundamental assumption: in a closed (isolated, fixed-energy) system in thermodynamic equilibrium, all accessible microstates are equally likely. 
+
+\subsection{States in paramagnet}
+Counting the number of available microstates for a mole of ideal gas is actually complicated. How many ways can 3-dimensional translational, rotational and vibrational motion of $\sim10^{23}$ particles be arranged? A lot! So, we start with a simpler system: a paramagnet. 
+
+\textbf{Definition:} A paramagnet is a material in which each atom has a magnetic moment $\Vec{\mu}$ that tends to orient itself in the direction of the external magnetic field $\Vec{B}$
+\begin{itemize}
+    \item $\Vec{\mu}$ acts as a ``quantum compass''
+    \item Quantum mechanics requires $\Vec{\mu}$ to be quantized (due to quantization of angular momentum and energy)
+    \item if $\Vec{\mu}$ isn't initially aligned with external $\Vec{B}$ field, it rotates itself $\implies$ torque is acting $\implies$ work is being done, changing energy of atom $\implies \Vec{\mu}$ misaligned with $\Vec{B}$ requires higher energy. 
+    \begin{itemize}
+        \item This is expressed with the formula $U_{atom} = - \Vec{\mu} \cdot \Vec{B}$. It can be verified that when $\Vec{\mu}$ is completely misaligned with $\Vec{B}$, $U_{atom} = 0$, which is the highest possible energy it can attain. 
+    \end{itemize}
+\end{itemize}
+
+For an electronic paramagnet, $\Vec{\mu}$ comes from electron in the unfilled outermost shell. The electron has two possible `spins' $\Vec{S}$ and $\Vec{\mu} = \mu_0 \Vec{S}$ where $\mu_0$ some constant. Consider a system where $S = \pm 1$ and $\Vec{S}$ is in the direction of $\Vec{B}$. Then, we have
+\begin{align*}
+    U_{atom} = -\mu_0 BS \implies U_{total} &= -\mu_0BS_{total} \\
+    &= -\mu_0 B(S_1+ S_2 + S_3 + \cdots)
+\end{align*}
+A system equilibrates through interactions between spins that allows atoms to exchange energy. Each spin produces a tiny magnetic field which can cause nearby spins to flip. 
+
+In the case of a paramagnet, the microstate specifies the spin of each of the $N$ atoms. This is analogous to specifying the position and momentum of each particle in a gas, but much simpler. The number of possible microstates is the number of possible arrangements of individual spins, which is $2^N$. 
+
+The macrostate in this case is $S_{total}$, which ranges from $-N$ to $N$. The number of macrostates possible is $N+1$ and flipping one spin changes $S_{total}$ by 2 units. $S_{total}$ can equivalently be labelled by $N_+$ or $N_-$
+\begin{align*}
+    S_{total} = N_+ + N_- = N_+ + (N - N_+) = 2N_+ - N
+\end{align*}
+\textbf{Definition:} The multiplicity of a macrostate $S_{total}$ (or $N_+$) is $\Omega(N_+)$, the number of corresponding microstates. 
+
+If the number of microstates of a system are know, then the macrostate is known. However, as long as the multiplicity of the macrostate exceeds 1, the reverse is not true. 
+
+Since we have $S_{total} = 2N_+ - N$, we can write that 
+\begin{align*}
+    \Omega(N_+) = {N \choose N_+} = \frac{N!}{(N-N_+)!N_+!}
+\end{align*}
+Finally, the probability of macrostate $N_+$ can be found with
+\begin{align*}
+    P(N_+) &= \frac{\Omega(N_+)}{\Omega(\text{all accessible macrostates)}}
+\end{align*}
+
+\subsection{The fundamental assumption of thermodynamics and statistical mechanics}
+
+At the end of the first section in this chapter, we mentioned that `all thermodynamic and statistical mechanics rely on one fundamental assumption: in a closed (isolated, fixed-energy) system in thermodynamic equilibrium, all accessible microstates are equally likely.' 
+
+\textbf{Definition:} A microstate is accessible if it satisfies the condition 
+\begin{align*}
+    S_{total} = - \frac{U}{\mu_0 B}
+\end{align*}
+
+This fundamental assumption means that over long time scales, energy gets ``passed around randomly'' such that at any instant, you are equally likely to find the system in any of the accessible microstates. ``Randomly'' means no discernable pattern. 
+
+We cannot prove the fundamental assumption at this stage but we can see why it is logically plausible; if we assume that the process that accomplishes energy exchange at the microscopic level is reversible, then the system has no preference for once accessible microstate over another. ``Reversible'' means the system can just as easily go from microstate A to B as from B to A. 
+
+For a large system, the number of accessible microstates is so huge that only a miniscule fraction of them could possibly occur within a reasonable amount of time. Here, the fundamental assumption implies that the microstates which do occur, over ``long'' timescales (relative to the timescale of the energy-exchange process), constitute a ``representative sample'' of all accessible microstates. 
+
+In this course, we generally define ``accessible'' as having the correct total energy. However, in certain complex systems, there may be classes of microstates that are inaccessible for reasons other than total energy. 
+
+\subsection{Einstein model}
+The Einstein model of a solid is a many-particle system where each particle is assumed to sit in a 3-dimensional quadratic potential $V$
+\begin{align*}
+    V_x = \frac{1}{2}m\omega x^2, ~~~ V_y = \frac{1}{2}m\omega y^2, ~~~ V_z = \frac{1}{2}m \omega z^2
+\end{align*}
+In particular, an Einstein solid is $N$ particles where each particle is a 3-dimensional simple harmonic oscillator with 2 degrees of freedom. A quantum harmonic oscillator has equally-spaced energy levels: $hf = \hbar \omega$.
+
+The microstate of an Einstein solid is the number of energy units in each oscillator. When labelling the microstate energies, the convention is to set $\hbar \omega = 1$.
+
+% TODO: stopped at slide 4 of lecture 5
+
+
+\section{Pressure}
+\textbf{References: 14/2/2022 Lecture, Schroeder 3.4} 
+
+So far, we've only really considered thermodynamic equilibrium where systems are only allowed to exchange energy. This gave us a statistical definition of temperature (by extremizing total entropy). Now, we will also consider mechanical equilibrium (i.e. the systems are also allowed to exchange volume). We will then obtain a statistical definition of pressure by extremizing total entropy. Physically, we will allow `mechanical contact' between systems (i.e. the partition between the systems can move). 
+
+Note: exchange of volume and energy is allowed, but not of particles:
+\begin{align*}
+    U &= U_1 + U_2 = U_1' + U_2' \tag{total energy fixed}\\
+    V &= V_1 + V_2 = V_1' + V_2' \tag{total volume fixed} \\
+    N_1 &= N_1', N_2 = N_2' \tag{particles cannot penetrate partition} 
+\end{align*}
+
+Combined entropy: 
+\begin{align*}
+    S &= S_1(U_1', N_1, V_1') + S_2(U_2', N_2, V_2') \\
+    &= S_1( U - U_2', N_1, V-V_2') + S_2(U_2', N_2, V_2') 
+\end{align*}
+Postulate: S should be at extremum with respect to both $U_2'$ and $V_2'$, 
+\begin{align*}
+    0 = \Big(\frac{\partial S}{\partial U_2'}\Big)_{V_2'} = \Big(\frac{\partial S}{\partial V_2'}\Big)_{U_2'}
+\end{align*}
+The first condition allowed us to define temperature. The second condition will define pressure. 
+\begin{align*}
+    0 = \frac{\partial S}{\partial V_2'} = \frac{\partial S_1}{\partial V_2'} + \frac{\partial S_2}{\partial V_2'} = -\frac{\partial S_1}{\partial V_1'} + \frac{\partial S_2}{\partial V_2'} \implies \frac{\partial S_1}{\partial V_1'}= \frac{\partial S_2}{\partial V_2'}
+\end{align*}
+Finally, we obtain the following relationship between pressure $P$ and entropy  
+\begin{align*}
+    P = T \Big( \frac{\partial S}{\partial V} \Big)_U
+\end{align*}
+There is an extra factor of the temperature $T$ because the dimensions require a multiplication by a temperature quantity. We \emph{can} multiply the temperature of the systems because they are in thermal equilibrium.
+
+\subsection{Pressure of an ideal gas} 
+\begin{align*}
+S &= k \ln \Omega \approx Nk \Bigg[\ln \big(\frac{V}{N}(\frac{4\pi m U}{3Nh^2})^{3/2}\big) + \frac{5}{2}\Bigg] \\
+\frac{P}{T} &= \frac{\partial S(N,U,V)}{\partial V} \\
+&= Nk \frac{\partial}{\partial V} (\ln V+ \ln(constants) + 5/2)  \\
+&= \frac{Nk}{V}
+\end{align*}
+
+\section{Chemical potential}
+\textbf{References: Lecture 8b Slides, 14/2/2022 Lecture, Schroeder 3.5}
+
+Maximizing entropy at thermal equilibrium gave us the definition of temperature. Maximizing entropy at mechanical equilibrium gave us the definition of pressure. Now, maximizing chemical equilibrium will give us the definition of chemical potential.
+
+\subsection{Definition}
+
+Chemical potential is the energy absorbed or emitted by the change in number of particles of a given species. Consider systems 1 and 2 in thermal and mechanical contact and with a porous partition so that particles can be exchanged. 
+\begin{align*}
+    U &= U_1 + U_2 = U_1' + U_2' \tag{total energy fixed}\\
+    V &= V_1 + V_2 = V_1' + V_2' \tag{total volume fixed} \\
+    N &= N_1 + N_2 = N_1' + N_2' \tag{total number of particles fixed} 
+\end{align*}
+This is rather difficult, so let's simplify by removing mechanical contact (i.e. keeping the position of the partition fixed). Again, we consider the combined entropy: 
+\begin{align*}
+    S &= S_1(U_1', N_1', V_1) + S_2(U_2', N_2', V_2) \\
+    &= S_1(U - U_2', N - N_2', V_1) + S_2(U_2', N_2', V_2) 
+\end{align*}
+We postulate that at equilibrium, S should be at an extremum with respect to both $U_2'$ and $N_2'$. It follows that
+\begin{align*}
+    0 = \Big(\frac{\partial S}{\partial U_2'}\Big) = \Big(\frac{\partial S}{\partial N_2'}\Big)
+\end{align*}
+The first condition gave us the definition of temperature and the second one will give us a definition of chemical potential. 
+\begin{align*}
+    0 = \frac{\partial S}{\partial N_2'} = \frac{\partial S_1}{\partial N_2'} + \frac{\partial S_2}{\partial N_2'} = -\frac{\partial S_1}{\partial N_1'} + \frac{\partial S_2}{\partial N_2'} \implies \frac{\partial S_1}{\partial N_1'}= \frac{\partial S_2}{\partial N_2'}
+\end{align*}
+Finally, we define the chemical potential as 
+\begin{align*}
+    \mu = -T (\frac{\partial S}{\partial N})_{V,U}
+\end{align*}
+
+Note: the reason why there is a negative sign in the potential is that systems should always evolve from system from a higher potential to a system to a lower potential. 
+
+Note: The slope of the $S$ vs $N$ plot decreases with increasing $N$ but remains positive everywhere. 
+
+%TODO: explanation of S vs N graph 
+
+\subsection{Chemical potential of an ideal gas}
+\begin{align*}
+S &= k \ln \Omega \approx Nk \Bigg[\ln \big(\frac{V}{N}(\frac{4\pi m U}{3Nh^2})^{3/2}\big) + \frac{5}{2}\Bigg] \\
+\frac{\mu}{T} &= -\frac{\partial S(N,U,V)}{\partial N} \\
+&= -k \Bigg[\ln \big(\frac{V}{N}(\frac{4\pi m U}{3Nh^2})^{3/2}\big) + \frac{5}{2}\Bigg] -Nk \frac{\partial}{\partial N}(\ln(\frac{C}{N^{5/2}}) + \frac{5}{2}) \\
+&= -k \Bigg[\ln \big(\frac{V}{N}(\frac{4\pi m U}{3Nh^2})^{3/2}\big) + \frac{5}{2}\Bigg] -Nk(\frac{N^{5/2}}{C} (-\frac{5}{2}C)\frac{1}{N^{7/2}}) \\
+&= -k \ln \big(\frac{V}{N}(\frac{4\pi m U}{3Nh^2})^{3/2}\big)
+\end{align*}
+Now, note that desnity $\rho = N/V$ and for an ideal gas, $U = \frac{3NkT}{2}$. Then, 
+\begin{align*}
+    \mu = -kT\ln\Bigg(\frac{1}{\rho} \Big(\frac{kT}{2}\Big)^{3/2} \Big(\frac{4\pi m}{h^2}\Big)^{3/2} \Bigg) 
+\end{align*}
+As $\rho$ decreases, the argument in $\ln$ increases and as a result, $\mu$ decreases (remember $\mu$ negative). This holds up with what we know because particles flow spontaneously from high $\rho$ to low $\rho$ (and hence, the chemical potential decreases).
+
+
+\subsection{Multiple particle types}
+If a system contains several species of particles, each species has its own chemical potential. 
+
+If systems 1 and 2 have species $\alpha$ and $\beta$, are are in diffusive equilibrium, then the chemical potentials for each species in each system must be equal. In other words, 
+\begin{align*}
+    \mu_{\alpha, 1} = \mu_{\alpha, 2} ~~~\text{ and }~~~ \mu_{\beta, 1} = \mu_{\beta, 2} 
+\end{align*}
+
+Moreover, we define the following quantities
+\begin{itemize}
+    \item Mole fraction $x_i$ of species $i$: the fraction of all molecules that belong to that species 
+\begin{align*}
+    x_i = \frac{N_i}{N_{total}}
+\end{align*}
+\item (For gases) partial pressure $P_i$ of species $i$: the fraction of the total pressure that is due to that species 
+\begin{align*}
+    P_i = x_i P 
+\end{align*}
+\end{itemize}
+Assuming that we have a mixture of ideal gases, we can write
+\begin{align*}
+    P_i &= x_i P = x_i \frac{N_{tot} kT}{V} = \frac{N_i kT}{V}
+\end{align*}
+This implies that the partial pressure for a given species is the same as what the total pressure would be if only that species were present. Therefore, fixing the partial pressure is equivalent to fixing the number of molecules of that species. 
+
+Indeed, we also find that $\mu_i$ is the same as what $\mu$ would have been had the other gases not been present (at a fixed partial pressure $P_i$). 
+
+%TODO: not really sure why 
+
+\section{Thermodynamic identity and Maxwell relations}
+\textbf{References: Lecture 9 Slides, 17/2/2022 Lecture}
+
+\subsection{Thermodynamic identity}
+
+Consider a three-stage process where we 
+\begin{enumerate}
+    \item Change $U$ while holding $V,N$ fixed
+    \item Change $V$ while holding $U, N$ fixed
+    \item Change $N$ while holding $U,V$ fixed
+\end{enumerate}
+Then, we write the change in entropy $\Delta S$ as 
+\begin{align*}
+    \Delta S &= \Delta S_1 + \Delta S_2 + \Delta S_3 \\
+    &= \Big(\frac{\Delta S}{\Delta U}\Big)_{V,N} + \Big(\frac{\Delta S}{\Delta V}\Big)_{U,N} + \Big(\frac{\Delta S}{\Delta N}\Big)_{U,V} \\
+    dS&= \Big(\frac{\partial  S}{\partial U}\Big)_{V,N} + \Big(\frac{\partial S}{\partial V}\Big)_{U,N} + \Big(\frac{\partial S}{\partial N}\Big)_{U,V} \\
+    &= \frac{1}{T}dU + \frac{P}{T}dV - \frac{\mu}{T}dN \\
+    \implies dU &= TdS - PdV + \mu dN
+\end{align*}
+The last line in the above derivation is the thermodynamic identity. This holds for any process composed of infinitesimal changes in $\{P,V,T,U\}$ in any system, even if the changes occur at the same time. 
+
+We can also recover the definitions of $T,P$ and $\mu$ from this identity: 
+\begin{itemize}
+    \item Set $dV = dN = 0$: 
+    \begin{align*}
+        dU = TdS \implies \frac{1}{T} = \Big(\frac{\partial S}{\partial U} \Big)_{V,N}
+    \end{align*}
+    \item Set $dU = dN = 0$: 
+    \begin{align*}
+        0 = TdS - PdV \implies \frac{P}{T} = \Big(\frac{\partial S}{\partial V} \Big)_{U,N}
+    \end{align*}
+    \item Set $dU = dV = 0$: 
+    \begin{align*}
+        TdS = -\mu dN \implies -\frac{\mu}{T} = \Big(\frac{\partial S}{\partial N}\Big)_{U,V}
+    \end{align*}
+\end{itemize}
+
+\subsection{Quasistatic cases}
+For quasistatic processes, where the pressure is uniform, we have that $W = -P dV$. Assume that only compression/expansion work is done and that $N$ is constant. Then, using $dU = TdS - PdV = TdS + W$ and $dU = Q + W$, we get $Q = TdS$. 
+
+If the process is also adiabatic ($Q=0$), then it follows that $dS = 0$. A process that is both adiabatic and quasistatic is called isentropic. These processes are generally rare.
+
+\subsection{Maxwell relations}
+For the simple systems we are considering, $U$ is ``well-behaved enough'' (as a function) that the order in which the partial derivatives are taken does not matter. The following are examples of Maxwell relations: TODO: add derivation for these
+\begin{enumerate}
+    \item When $N$ is constant, 
+\begin{align*}
+    \frac{\partial }{\partial V} \Big(\frac{\partial U}{\partial S}\Big) &= \frac{\partial }{\partial S}\Big(\frac{\partial U}{\partial V}\Big)
+\end{align*}
+Then, using the thermodynamic identity with $N$ constant $dU = TdS - PdV$, we get 
+\begin{align*}
+    \frac{\partial T}{\partial V} = - \frac{\partial P}{\partial S}
+\end{align*}
+
+    \item When $V$ is constant, 
+    \begin{align*}
+        \frac{\partial}{\partial N} \frac{\partial U}{\partial S} = \frac{\partial }{\partial S} \frac{\partial U}{\partial N}
+    \end{align*}
+    Then, using the thermodynamic identity with $V$ constant: $dU = Tds + \mu dN$, we get
+    \begin{align*}
+        \frac{\partial T}{\partial N} = - \frac{\partial \mu }{\partial S}
+    \end{align*}
+    
+    \item When $S$ is fixed, 
+    \begin{align*}
+        \frac{\partial }{\partial N}\frac{\partial U}{\partial V} = \frac{\partial }{\partial V} \frac{\partial U}{\partial N}
+    \end{align*}
+    Then, using the thermodynamic identity with $S$ constant: $dU = -Pdv + \mu dN$, we get
+    \begin{align*}
+        -\frac{\partial P}{\partial N} = \frac{\partial \mu}{\partial V}
+    \end{align*}
+\end{enumerate}
+
+\section{Free energy and chemical thermodynamics}
+\textbf{References: Lecture 10 Slides, Schroeder 5.1}
+
+The purpose of this chapter is to apply the laws of thermodynamics to chemical reactions and other transformations of matter. These processes are usually either constant-temperature or constant-pressure and so we will develop tools to understand these processes. 
+
+\subsection{Enthalpy and total energy}
+
+Recall enthalpy (section 7.3). The enthalpy $H$ of a system was defined to be $U + PV$ where $U$ is the total energy, $P$ is the (constant) pressure of the environment and $V$ is the volume of the system. In fact, $U$ and $H$ are both examples of functions called thermodynamic potentials. There are two more thermodynamic potentials. 
+
+\subsection{Helmholtz free energy}
+\textbf{Definition:} The following definitions of the Helmholtz free energy are all equivalent 
+\begin{itemize}
+    \item the total energy needed to create a system minus the heat that can be obtained `for free' from the environment
+    \item the energy that must be provided as work to create the system out of nothing if you don't need to push the atmosphere away
+    \item the total energy recovered from annihilating the system, minus heat lost to the environment (some heat must be dumped in order to get rid of the system's entropy) 
+    \item the energy recovered as work if there were no atmosphere and the system were to vanish into nothing
+\end{itemize}
+In particular, if $U$ is the energy of the system, $T$ the temperature of the environment and $S$ the (final) entropy of the system, then the Helmholtz free energy is given by $F = U - TS$.
+
+\subsection{Gibbs free energy}
+\textbf{Definition:} The following definitions of the Gibbs free energy are all equivalent 
+\begin{itemize}
+    \item the total energy needed to create the system minus the heat that can be obtained `for free' from the environment plus the work needed to make room for the system 
+    \item the energy that must be provided as work to create the system out of nothing and push the atmosphere away 
+    \item the total energy reovered from annihilating the ssytem minus the heat lost to the environment plus the work done by the atmosphere as it collapses to fill the vacuum
+    \item the energy recovered as work including the work done by the atmosphere if the system vanishes into nothing
+\end{itemize}
+In particular, if $U$ is the energy of the system, $T$ the temperature of the environment, $S$ the (final) entropy of the system, $P$ the (constant) pressure of the environment and $V$ the volume of the system, then the Gibbs free energy is given by $G = U - TS + PV$. 
+
+Since most processes we deal with often fall short of the creation or annihilation of an entire system, it is the changes in thermodynamic potentials, not the values themselves, that are useful. 
+
+The actual values would include the rest energies of all particles, which may be impractical to compute in everyday situations. So, we instead measure potentials from a convenient but arbitrary reference point. Since changes in potentials are unaffected by the choice of reference point, the choice of reference point is arbitrary and we do not usually specify it. 
+
+\subsection{Extensive and intensive quantities}
+
+\section{Quotes}
+
+\emph{The fundamental laws of the universe which correspond to the two fundamental theorems of the mechanical theory of heat.
+\begin{enumerate}
+    \item The energy of the universe is constant.
+    \item The entropy of the universe tends to a maximum.
+\end{enumerate}
+}
+\begin{flushright}
+- Rudolf Clausius, 
+\end{flushright}
+
+\end{document}  
