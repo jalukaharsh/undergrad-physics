@@ -36,8 +36,21 @@ jobs:
 
       - name: Prepare Pages content
         run: |
-          mkdir public
-          find . -name "*.pdf" -exec mv {} public/ \;
+          mkdir -p public
+          echo "Looking for PDF files..."
+          find . -name "*.pdf" -type f
+          
+          echo "Copying PDFs with directory structure..."
+          find . -name "*.pdf" -type f | while read -r pdf; do
+            rel_path=${pdf#./}
+            target_dir="public/$(dirname "$rel_path")"
+            mkdir -p "$target_dir"
+            cp "$pdf" "public/$rel_path"
+          done
+          
+          cd public
+          tree -H '.' -L 10 -P "*.pdf" --noreport --charset utf-8 -o index.html
+          cd ..
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
