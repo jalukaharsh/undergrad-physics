@@ -1,0 +1,421 @@
+%% LyX 2.3.4.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[xcolor=table]{beamer}
+\usepackage{mathpazo}
+\renewcommand{\sfdefault}{lmss}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{siunitx}
+
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+% this default might be overridden by plain title style
+\newcommand\makebeamertitle{\frame{\maketitle}}%
+% (ERT) argument for the TOC
+\AtBeginDocument{%
+  \let\origtableofcontents=\tableofcontents
+  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+  \def\gobbletableofcontents#1{\origtableofcontents}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usetheme{Darmstadt}
+%\usetheme{Frankfurt}
+% or ...
+
+\setbeamercovered{transparent}
+\setbeamersize{text margin left=7mm,text margin right=7mm} 
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\title[Short Paper Title]{Relativistic Quantum Open Strings}
+% \subtitle{Two roads to quantization}
+
+\author[Author]{Harsh Jaluka}
+\institute[Universities of Toronto]{Department of Physics\\
+University of Toronto}
+\date{Final Presentation for PHY472: Intro to String Theory\\ \today}
+
+\makebeamertitle
+
+%\pgfdeclareimage[height=0.5cm]{institution-logo}{institution-logo-filename}
+
+%\logo{\pgfuseimage{institution-logo}}
+
+\AtBeginSection[]{
+
+  \frame<beamer>{ 
+
+    %\frametitle{Outline}   
+
+    \tableofcontents[currentsection] 
+
+  }
+
+}
+
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+\setbeamercolor{footline}{fg=black}
+
+%\beamerdefaultoverlayspecification{<+->}
+% \begin{frame}{}
+
+% \tableofcontents{}
+
+% \end{frame}
+
+\subsection{Upgrades}
+\begin{frame}{Upgrades}
+Schrodinger operators: 
+\begin{align*}
+    X^I(\sigma), ~~x^-_0, ~~\mathcal{P}^{tI}(\sigma), ~~p^+ \tag{12.4}
+\end{align*}
+Heisenberg operators: 
+\begin{align*}
+    X^I(\tau, \sigma), ~~x^-_0(\tau), ~~\mathcal{P}^{tI}(\tau, \sigma), ~~p^+(\tau) \tag{12.5} 
+\end{align*}
+\end{frame}
+
+\subsection{Commutation relations}
+
+\begin{frame}{Commutation relations (CRs)}
+Nontrivial:
+\begin{align*}
+    [X^I(\sigma), \mathcal{P}^{tJ}(\sigma')] &= i \eta^{IJ} \delta(\sigma - \sigma') \tag{12.6}\\
+    [x_0^-, p^+] &= -i \tag{12.8} 
+\end{align*} 
+Trivial:
+\begin{align*}
+    [X^I(\sigma), X^J(\sigma')] &= [\mathcal{P}^{tI}(\sigma), \mathcal{P}^{tJ}(\sigma')] = 0 \tag{12.7}\\
+    [x_0^-, X^I(\sigma)] = [x_0^-, \mathcal{P}^{tI}(\sigma)] &= [p^+, X^I(\sigma)] \\
+    &= [p^+, \mathcal{P}^{tI}(\sigma)] = 0 \tag{12.9}
+\end{align*}
+*Associated CR for Heisenberg operators (a priori) differ only by a $\tau$ dependence in all operators
+\end{frame}
+
+\subsection{Hamiltonian}
+
+\begin{frame}{Hamiltonian}
+Since $X^+ = 2\alpha' p^+ \tau$, it is easy to guess that*
+\begin{align*}
+    H &= 2\alpha' p^+ p^- = 2\alpha' p^+ \int_0^\pi d\sigma \mathcal{P}^{\tau-} \tag{12.14}\\
+    &= L_0^\perp \tag{9.78, 12.16}
+\end{align*}
+In all its glory
+\begin{align*}
+    H(\tau) = \pi \alpha' \int_0^\pi d\sigma \left(\mathcal{P}^{tI} (\tau, \sigma) \mathcal{P}^{tI}(\tau, \sigma) + \frac{X^{I'}(\tau, \sigma) X^{I'}(\tau, \sigma}{(2\pi \alpha')^2}\right) \tag{12.15} 
+\end{align*}
+\small{*True Hamiltonian is slightly different}
+\end{frame}
+
+\begin{frame}{Equations of motion}
+Any Heisenberg operator $\xi(\tau, \sigma)$ which arises from a time-independent Schrodinger operator $\xi(\sigma)$ must satisfy 
+\begin{align*}
+    i \dot{\xi}(\tau, \sigma) = [\xi(\tau, \sigma), H(\tau)] \tag{12.17}
+\end{align*}
+Hence, 
+\begin{align*}
+    i \dot{X^I}(\tau, \sigma) &= [X^I(\tau, \sigma), H(\tau)] \\
+    &= \vdots \\
+    &= 2\pi \alpha' \mathcal{P}^{\tau I}(\tau, \sigma) \tag{12.21}
+\end{align*}
+coincides with classical equation of motion!
+\end{frame}
+
+\begin{frame}{More CRs}
+Linear combinations of derivatives $\dot{X}^I \pm {X^I}'$ are simple and useful. 
+
+Nontrivial: 
+\begin{align*}
+    \left[ (\dot{X}^I \pm {X^I}') (\tau, \sigma), (\dot{X}^J \pm {X^J}') (\tau, \sigma') \right] = \pm 4\pi \alpha' i \eta^{IJ} \frac{d}{d\sigma} \delta(\sigma - \sigma') \tag{12.30}
+\end{align*}
+Trivial: 
+\begin{align*}
+    \left[ (\dot{X}^I \pm {X^I}') (\tau, \sigma), (\dot{X}^J \mp {X^J}') (\tau, \sigma') \right] = 0\tag{12.31}
+\end{align*}
+\end{frame}
+
+\subsection{Recap (and problem)}
+\begin{frame}{Recap (and problem)}
+    \begin{align*}
+    &[X^I(\sigma), \mathcal{P}^{tJ}(\sigma')] = i \eta^{IJ} \delta(\sigma - \sigma') \tag{12.6}\\
+    &[x_0^-, p^+] = -i \tag{12.8} \\
+    &i \dot{X^I}(\tau, \sigma) = 2\pi \alpha' \mathcal{P}^{\tau I}(\tau, \sigma) \tag{12.21} \\
+    &\left[ (\dot{X}^I \pm {X^I}') (\tau, \sigma), (\dot{X}^J \pm {X^J}') (\tau, \sigma') \right] = \pm 4\pi \alpha' i \eta^{IJ} \frac{d}{d\sigma} \delta(\sigma - \sigma') \tag{12.30}
+\end{align*}
+\begin{itemize}
+    \item \textbf{Problem:} We have an infinite set of relations with continuous dependence on $\sigma$. 
+    \item Can we get a discrete, enumerable set of relations (creation and annihilation operators...)?
+\end{itemize}
+
+
+\end{frame}
+
+\subsection{Creation and annihilation operators}
+\begin{frame}{Creation and annhiliation operators}
+Recall 
+\begin{align*}
+    (\dot{X}^I \pm {X^I}')(\tau, \sigma) = \sqrt{2\alpha' } \sum_{n \in \mathbb{Z}} \alpha_n^I e^{-in(\tau \pm \sigma)} \tag{9.74, 12.33}
+\end{align*}
+and after a lot of algebra...: \vspace{1em}
+
+Commutation relations between classical modes: 
+\begin{align*}
+    [\alpha_m^I, \alpha_n^J] = m \eta^{IJ} \delta_{m+n, 0} \tag{12.45}
+\end{align*}
+Final remaining commutation relation:
+% \begin{align*}
+%     (\alpha_n^I)^\dagger = \alpha_{-n}^I, ~~~~n \in \mathbb{Z} \tag{12.58}
+% \end{align*}
+\begin{align*}
+    [x_0^I,p^J] = i \eta^{IJ} \tag{12.54}
+\end{align*}
+\end{frame}
+
+\begin{frame}{Oscillators}
+Commutation relations
+\begin{align*}
+    [a_m^I, a_n^{J \dagger}] = \delta_{m,n} \eta^{IJ} \tag{12.64}
+\end{align*}
+where 
+\begin{align*}
+    a_n^I := \frac{\alpha_n^I}{\sqrt{n}}, ~~~~ a_{n}^{I\dagger} := \frac{{\alpha_n^I}^\dagger}{\sqrt{n}} = \frac{\alpha_{-n}^I}{\sqrt{n}} \tag{12.57}
+\end{align*}
+which gives 
+\begin{align*}
+    X^I(\tau, \sigma) = x_0^I + 2\alpha' p^I \tau + i \sqrt{2\alpha'} \sum_{n=1}^\infty \left(a_n^I e^{-in\tau} -a_n^{I \dagger} e^{in\tau} \right) \frac{\cos n \sigma}{\sqrt{n}} \tag{12.67} 
+\end{align*}
+\end{frame}
+
+\subsection{Harmonic oscillators}
+\begin{frame}{Strings as harmonic oscillators}
+There is an alternative derivation of the 
+results we have obtained so far, identifying coefficients of the string Lagrangian with harmonic oscillators with an ever-increasing set of energies. 
+\begin{center}
+    \textbf{I will not discuss this, in favour of more interesting results later in the chapter}
+\end{center}
+\end{frame}
+
+\subsection{Transverse Virasoro operators}
+\begin{frame}{Transverse Virasoro operators}
+We have a mode expansion for $X^I(\tau, \sigma)$ and we know $X^+(\tau, \sigma) = 2\alpha' p^+ \tau$. How about $X^-$? \vspace{1em}
+
+Needed classical transvere Virasoro modes for $X^-$:
+\begin{align*}
+    L_n^\perp = \frac{1}{2}\sum_{p \in \mathbb{Z}} \alpha_{n-p}^I \alpha_p^I \tag{12.100}
+\end{align*}
+With $\alpha_n^I$'s now operators...
+\begin{center}
+    Virasoro \textit{modes} $\to$ Virasoro \textit{operators}
+\end{center}
+but there is an ordering ambiguity ($[\alpha_{p-n}^I, \alpha_p^I] = (p-n) \delta_{n,0} \implies \alpha_{n-p}^I \alpha_p^I$ don't commute when $n = 0$)
+\end{frame}
+
+\subsection{Normal-ordering}
+\begin{frame}{Normal ordering to the rescue!}
+Normal-ordering: creation on the left, annihilation
+on the right 
+\begin{align*}
+    L_0^\perp &= \frac{1}{2}\alpha_0^I \alpha_0^I + \sum_{p=1}^\infty \alpha_{-p}^I \alpha_p^I = \alpha' p^I p^I + \sum_{p=1}^\infty pa_p^{I\dagger} a_p^I \tag{12.105}
+\end{align*}
+\textit{without the ordering constant $a$!}
+\begin{align*}
+    a= \frac{1}{2}(D-2) \sum_{p=1}^\infty p &= -\frac{1}{24} (D-2) \tag{12.107, 12.111}
+\end{align*}
+where we used the zeta function to evaluate the infinite sum. 
+
+
+($a$ shifts the mass-squared spectrum and gives rise to massless photon states!)
+\end{frame}
+
+\begin{frame}{CRs involving transverse Virasoro operators}
+\begin{align*}
+    [L_m^\perp, \alpha_n^J] &= -n \alpha_{m+n}^J \tag{12.118} \\
+    [L_m^\perp, x_0^I] &= -i \sqrt{2\alpha' }\alpha_m^I \tag{12.119} \\
+    [L_m^\perp, L_n^\perp] &= (m-n) L_{m+n}^\perp + \frac{D-2}{12}(m^3 - m) \delta_{m+n, 0} \tag{12.133}
+\end{align*}
+    
+\end{frame}
+
+\begin{frame}{Action on coordinates}
+The action of $L_m^\perp$ on coordinates $X^I$ is given by
+\begin{align*}
+    [L_m^\perp, X^I (\tau, \sigma)] = \xi^\tau_m \dot{X}^I + \xi^\sigma_m {X^I}' \tag{12.136}
+\end{align*}
+where 
+\begin{align*}
+    \xi^\tau_m (\tau, \sigma) = -i e^{im\tau} \cos m \sigma, ~~~~\xi^\sigma_m (\tau, \sigma) = e^{im\tau} \sin m \sigma \tag{12.137}
+\end{align*}
+Indeed, for $m=0$ 
+\begin{align*}
+    [L_0^\perp, X^I] = -i \partial_\tau X^I 
+\end{align*}
+the Heisenberg equation of motion for $X^I$.
+
+-- Expected because $L_0^\perp$ is, up to a constant, the string Hamiltonian, and must generate time translations. 
+\end{frame}
+
+\subsection{Lorentz generators}
+\begin{frame}{What about quantum Lorentz generators?}
+Classical Lorentz generators in terms of oscillation modes 
+\begin{align*}
+    M^{\mu\nu} = x^\mu_0 p^\nu - x_0^\nu p^\mu - i \sum_{n=1}^\infty \frac{1}{n}(\alpha_{-n}^\mu \alpha_n^\nu - \alpha_{-n}^\nu \alpha_{n}^\mu ) \tag{12.147}
+\end{align*}
+Quantum Lorentz generators are necessary to ensure Lorentz invariance of string theory!
+\begin{center}
+    In light-cone gauge, $M^{-I}$ turns out to be the most involved quantum Lorentz generator; let's work on this first. 
+\end{center}
+\end{frame}
+
+\begin{frame}{$M^{-I}$}
+Want $M^{-I}$ to be Hermitian and normal-ordered. (Educated) guess 
+\begin{align*}
+    M^{-I} = x_0^- p^I - \frac{1}{2}(x_0^I p^- + p^- x_0^I) -i \sum_{n=1}^\infty \frac{1}{n}(\alpha_{-n}^- \alpha_n^I - \alpha_{-n}^I \alpha_n^-) \tag{12.150}
+\end{align*}
+We then find 
+\begin{align*}
+    [M^{-I}, M^{-J}] = &- \frac{1}{\alpha' (p^+)^2} \sum_{m=1}^\infty (\alpha_{-m}^I \alpha_m^J - \alpha_{-m}^J \alpha_m^I ) \\
+    &\cdot \left[ m \left( 1 - \frac{1}{24} (D-2) \right) + \frac{1}{m}\left( \frac{1}{24}(D-2) + a \right) \right] \tag{12.152}
+\end{align*}
+\end{frame}
+
+\begin{frame}{Dimension of spacetime}
+To have $[M^{-I}, M^{-J}] = 0$, we must have 
+\begin{align*}
+    D = 26, ~~~~ a = -1 \tag{12.155, 12.156}
+\end{align*}
+``26 dimensions of spacetime!''
+
+The string Hamiltonian now is 
+\begin{align*}
+    H = L_0^\perp - 1 \tag{12.158}
+\end{align*}
+This is the true Hamiltonian!
+\end{frame}
+
+\subsection{The state space}
+\begin{frame}{The state space}
+Ground states: 
+\begin{align*}
+    | p^+, \vec{p}_T \rangle \tag{12.159}
+\end{align*}
+Annihilated by annihilation operators:
+\begin{align*}
+    a_n^I | p^+, \vec{p}_T \rangle = 0, ~~~~ n \geq 1, I =2, \cdots, 25 \tag{12.160}
+\end{align*}
+General basis states created by creation operators: 
+\begin{align*}
+    | \lambda \rangle = \prod_{n=1}^\infty \prod_{I=2}^{25} \left( a_n^{I\dagger}\right)^{\lambda_{n,I}} |p^+, \vec{p}_T \rangle \tag{12.162}
+\end{align*}
+leading to an infinite dimensional Hilbert space!
+\end{frame}
+
+\begin{frame}{Inner product and time evolution}
+The Hilbert space is equipped with an inner product
+\begin{align*}
+    \langle p'^+, \vec{p'}_T | p^+, \vec{p}_T\rangle = \delta(p'^+ - p^+) \delta(\vec{p'}_T - \vec{p}_T) \tag{12.171}
+\end{align*}
+Any given state $| \lambda \rangle$ can be time evolved as usual 
+\begin{align*}
+    \exp\left( -i (L_0^\perp - 1) \tau \right) | \lambda \rangle \tag{12.175}
+\end{align*}
+
+\end{frame}
+
+\begin{frame}{Number operator}
+Consider the mass-squared operator 
+\begin{align*}
+    M^2 = \frac{1}{\alpha'} \left( -1 + \sum_{n=1}^\infty n a_n^{I\dagger} a_n^I \right) \tag{12.163}
+\end{align*}
+We define the numbering operator 
+\begin{align*}
+    N^\perp = \sum_{n=1}^\infty n a_n^{I\dagger} a_n^I 
+\end{align*}
+with properties 
+\begin{align*}
+    [N^\perp, a_n^{I\dagger}] = n a_n^{I\dagger}, ~~~ [N^\perp, a_n^I] = -na_n^I \tag{12.165, 12.166}
+\end{align*}
+\end{frame}
+
+
+
+\begin{frame}{Some particular states}
+\begin{center}
+    \begin{tabular}{c|c|c|c}
+    $N^\perp$ & $|\lambda \rangle$ & $\alpha' M^2$ & Number of states \\ \hline 
+    0 & $| p^+, \vec{p}_T \rangle$ & -1 & 1 \\
+    1 & $a_1^{I\dagger} |p^+, \vec{p}_T \rangle$ & 0 & 24 \\
+    2 & $a_1^{I\dagger} a_1^{J\dagger} |p^+, \vec{p}_T \rangle$, $a_2^{I\dagger} |p^+, \vec{p}_T \rangle$& 1 & 324 
+\end{tabular}
+\end{center}
+Negative masses? Tachyons!
+\end{frame}
+
+\begin{frame}{Recap (what have we achieved?)}
+Before quantization
+    \begin{itemize}
+        \item A continuous range of masses with a non-polarized ground state with mass 0. 
+        \item No state corresponding to a photon!
+    \end{itemize}
+After quantization
+    \begin{itemize}
+        \item Quantized masses with a polarized ground state with mass 0.
+        \item Photons!
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Equations of motion}
+General time-dependent state
+\begin{align*}
+    | \Psi, \tau \rangle = \int dp^+ d\vec{p_T} \psi_{I_1, \cdots, I_k}(\tau, p^+, \vec{p}_T) a_{n_1}^{I_1 \dagger} \cdots a_{n_k}^{I_k \dagger} | p^+, \vec{p}_T \rangle \tag{12.182}
+\end{align*}
+Schrodinger equation
+\begin{align*}
+    &i \frac{\partial }{\partial \tau} |\Psi, \tau \rangle = H | \Psi, \tau \rangle \tag{12.186} \\
+    &\implies i \frac{\partial }{\partial \tau}\psi_{I_1, \cdots, I_k} = (\alpha' p^I p^I + N^\perp - 1) \psi_{I_1, \cdots, I_k} \tag{12.188}
+\end{align*}
+\end{frame}
+
+\subsection{Tachyons}
+
+\begin{frame}{The open string tachyon}
+For a free scalar field 
+\begin{align*}
+    V(\phi) = \frac{1}{2}M^2 \phi^2 
+\end{align*}
+The equation of motion of a classical, time-dependent, free scalar field 
+\begin{align*}
+    \partial^2_t \phi - M^2 \phi= 0
+\end{align*}
+For negative $M^2 = -\beta^2$, as for tachyons, we have 
+\begin{align*}
+    \phi(t) = A \cosh (\beta t) + B\sinh(\beta t) \tag{12.204} 
+\end{align*}
+-- Goes to infinity as $t\to \infty$.
+
+-- Instability in open string theory! 
+\end{frame}
+
+
+\subsection{Acknowledgements}
+\begin{frame}{Acknowledgements}
+\begin{itemize}
+    \item Sincere thanks to Professor A.W. Peet for taking their time to go over this text with us!
+
+    \item Thanks to Professor Kushner for taking his time to grade the final presentations!
+
+    \item All equations reference Zwiebach's `A First Course in String Theory'.
+\end{itemize}
+\end{frame}
+
+\end{document}
