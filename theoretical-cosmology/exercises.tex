@@ -1,0 +1,715 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{8pt}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{mathrsfs}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage{siunitx}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\QED}{\rightline{\emph{Quod erat demonstrandum.}}}
+\newcommand{\xhat}{\mathbf{\hat{x}}}
+\newcommand{\yhat}{\mathbf{\hat{y}}}
+\newcommand{\zhat}{\mathbf{\hat{z}}}
+\newcommand{\thetahat}{\mathbf{\hat{\theta}}}
+\newcommand{\phihat}{\mathbf{\hat{\phi}}}
+\newcommand{\rhat}{\mathbf{\hat{r}}}
+\newcommand{\shat}{\mathbf{\hat{s}}}
+\def\rcurs{{\mbox{$\resizebox{.16in}{.08in}{\includegraphics{images/ScriptR.pdf}}$}}}
+\def\brcurs{{\mbox{$\resizebox{.16in}{.08in}{\includegraphics{images/BoldR.pdf}}$}}}
+\def\hrcurs{{\mbox{$\hat \brcurs$}}}
+
+\allowdisplaybreaks
+
+
+\title{Theoretical Cosmology}
+\author{Harsh Jaluka}
+\date{\today}
+
+\begin{document}
+
+\begin{titlepage}
+\maketitle 
+\end{titlepage}
+
+\newpage 
+\tableofcontents
+
+\newpage
+
+\section{The concordance model of cosmology}
+\subsection{Question 1.1 (Incomplete)}
+
+Suppose (incorrectly) that $H$ scales as temperature squared all the way back until the time when the temperature of the universe was $\qty{e19}{GeV/k_B}$ (i.e., suppose the universe was radiation dominated all the way back to \textit{Planck time}). Also suppose that today the dark energy is in the form of a cosmological constant $\Lambda$, such that $\rho_\Lambda$ today is equal to $0.7 \rho_{cr}$ and $\rho_\Lambda$ remains constant throughout the history of the universe. What was $\rho_\Lambda / (3H^2 / 8\pi G)$ back then? The purpose of this estimate is to illustrate how odd (or unnatural) is the value of $\Lambda$. For a variety of reasons (see Exercise 1.5), one would expect its natural vaue to yield an energy density comparable to the ambient density at the Planck time. 
+
+\textbf{Solution:}
+
+The Friedmann equation gives
+\begin{align*}
+    H^2(t) = \frac{8\pi G}{3} \left[ \rho(t) + \frac{\rho_{cr} - \rho(t_0)}{a^2(t)} \right] 
+\end{align*}
+
+\subsection{Question 1.2 (Partially Incomplete)}
+Assume the universe today is Euclidean with both matter and a cosmological constant, the latter with energy density that remains constant with time. Integrate Eq. (1.2) to find the present age of the universe (since radiation dominated only during a small fraction of the universe's age, including only matter and cosmological constant is a good approximation). That is, assume that $\rho(t_0) = \rho_{cr}$ and use Eq. (1.3) to write 
+\begin{align*}
+    dt = H^{-1}_0 \frac{da}{a} \left[ \Omega_\Lambda + \frac{1 - \Omega_\Lambda}{a^3}\right]^{-1/2}
+\end{align*}
+where $\Omega_\Lambda$ is the ratio of energy density in the cosmological constant to the critical density (see Eq. (2.71)). Integrate from $a=0$ (when $t=0$) until today at $a = 1$ to get the age of the universe today. In both cases below the integral can be done analytically. 
+\begin{enumerate} [(a)]
+    \item First do the integral in the case when $\Omega_\Lambda = 0$. 
+    \item Now do the integral in the case when $\Omega_\Lambda> 0$. \textit{Hint:} Define a new integration variable $x \equiv \ln(1/a^3)$ and then use the fact that 
+    \begin{align*}
+        \int \frac{dx}{\sqrt{1 + \alpha e^x}} = -2 \coth^{-1}(\sqrt{\alpha e^x + 1})
+    \end{align*}
+    \item For fixed $H_0$, which universe is older?
+\end{enumerate}
+
+\textbf{Solution:}
+
+Eq. (1.2) is the definition of the Hubble rate  
+\begin{align*}
+    H(t) = \frac{1}{a} \frac{da}{dt}
+\end{align*}
+Eq. (1.3) states the Friedmann equation
+\begin{align*}
+    H^2(t) = \frac{8\pi G}{3} \left( \rho(t) + \frac{\rho_{cr} - \rho(t_0)}{a^2(t)}\right) 
+\end{align*}
+Eq. (2.71) defines the density parameters
+\begin{align*}
+    \Omega_s = \frac{\rho_s(t_0)}{\rho_{cr}}
+\end{align*}
+Assuming a Euclidean universe ($\rho_{cr} = \rho(t_0)$) and substituting the definition for the Hubble rate
+\begin{align*}
+    \left( \frac{1}{a} \frac{da}{dt}\right)^2 &= \frac{8\pi G}{3}\rho(t) \\
+    dt &= \frac{da}{a} \sqrt{\frac{3}{8\pi G \rho(t)}} \\
+    &= \frac{da}{a} \sqrt{\frac{3}{8\pi G \rho_{cr}(\Omega_\Lambda + \Omega_m(t))}}
+\end{align*}
+where $\Omega_m(t)$ refers to the density of nonrelativistic matter and $\Omega_\Lambda$ the energy density of the cosmological constant. Note that we know 
+\begin{align*}
+    \rho_{cr} = \frac{3H_0^2}{8\pi G}, ~~~~~~ \Omega_m(t) \propto \frac{1}{a^3}
+\end{align*}
+Since we assume our universe \textit{only} contains matter and the cosmological constant, we can write 
+\begin{align*}
+    \Omega_m(t_0) = 1 - \Omega_\Lambda \implies \Omega_m(t) = \frac{1 - \Omega_\Lambda}{a^3}
+\end{align*}
+(I'd just like to point out that this violates our Euclidean assumption because $\Omega_m(t) + \Omega_\Lambda > 1$ for any $t < t_0$, particular so at early times. Hence, it might be a little bit of an unphysical question.) This finally gives
+\begin{align*}
+    dt = \frac{da}{a} \frac{1}{H_0}\sqrt{\frac{1}{\Omega_\Lambda + \frac{1-\Omega_\Lambda}{a^3}}} = \frac{da}{aH_0} \left(\Omega_\Lambda + \frac{1-\Omega_\Lambda}{a^3}\right)^{-1/2}
+\end{align*}
+as desired. 
+\begin{enumerate} [(a)]
+    \item When $\Omega_\Lambda = 0$, 
+    \begin{align*}
+        dt &= \frac{da \sqrt{a}}{H_0} \\
+        \int_0^{t_0} dt &= \int_0^1 \frac{da \sqrt{a}}{H_0} \\
+        t_0 &= \frac{1}{H_0} \left(\frac{2}{3}a^{3/2}\right)^1_0 = \frac{2}{3H_0}
+    \end{align*}
+    We know that 
+    \begin{align*}
+        H_0 = \frac{h}{0.98 \times 10^{10} \text{ years}} \tag{$h \simeq 0.7$} \implies t_0 &= \frac{2*0.98}{3h} \times 10^{10} \text{years} \\
+        &= 9.33 \text{ billion years}
+    \end{align*}
+\end{enumerate}
+
+\newpage
+\section{The expanding universe}
+\subsection{Question 2.9: pressure of a relativistic species}
+\begin{enumerate} [(a)]
+    \item Compute the pressure of a relativistic species in equilibrium with temperature $T$. Show that $\mathcal{P} = \rho/3$ for both Fermi-Dirac and Bose-Einstein statistics. 
+    \item Suppose the distribution function depends only on $E/T$ as it does in equilibrium in the absence of a chemical potential. Find $d\mathcal{P}/dT$. A simple way to do this is to rewrite $df/dT$ in the integral as $-(E/T)df/dE$ and then integrate Eq. (2.64) by parts. 
+\end{enumerate}
+
+\textbf{Solution:}
+\begin{enumerate}[(a)]
+    \item We have the equations that describe the energy density and pressure of a given species 
+    \begin{align*}
+        \rho_s(\vec{x}, t) &= g_s \int \frac{d^3 p}{(2\pi)^3} f_s(\vec{x}, \vec{p}, t) E_s(p) \\
+        \mathcal{P}_s(\vec{x}, t) &= g_s \int \frac{d^3 p}{(2\pi)^3}f_s(\vec{x}, \vec{p}, t) \frac{p^2}{3E_s(p)}
+    \end{align*}
+    For a relativistic species, we have $E = p$, which clearly gives $\mathcal{P} = \rho/3$ independent of the distribution function. 
+    \item First, check that 
+    \begin{align*}
+        \frac{dE }{dp } = \frac{d\sqrt{p^2 + m^2}}{dp} =  \frac{1}{2\sqrt{p^2 + m^2}}\cdot 2p = \frac{p}{E}
+    \end{align*}
+    Then, 
+    \begin{align*}
+        \frac{d\mathcal{P}}{dT} &= g_s \int \frac{d^3 p}{(2\pi)^3} \frac{d f_s(\vec{x}, \vec{p}, t)}{dT} \frac{p^2}{3E_s(p)} \\
+        &= g_s \int \frac{d^3p}{(2\pi)^3} \left( - \frac{E}{T}\right) \frac{df }{dE} \frac{p^2}{3E_s(p)} \\
+        &= \frac{-g_s}{3(2\pi)^3 T} \int d^3p \frac{df }{dp} \frac{E}{p} p^2 \\
+        &=  \frac{-g_s}{3(2\pi)^3 T} \int d\Omega \int dp p^3 E \frac{df}{dp} \\
+        &= \frac{-g_s}{3(2\pi)^3 T} \int d\Omega \left[ (p^3Ef)^\infty_0 - \int f (3p^2 Edp + p^3 dE) \right] \\
+        &= \frac{g_s}{3(2\pi)^3 T} \int d\Omega \int dp p^2f (3 E + \frac{p^2}{E}) \\
+        &= \frac{g_s}{3(2\pi)^3 T} \int d^3p f (3E + \frac{p^2}{E}) \\
+        &= \frac{\rho +\mathcal{P}}{T}
+    \end{align*}
+    as desired. 
+
+    Note that we used $(p^3 E f)^\infty_0 = 0$ because the distribution function goes to 0 at infinity and the momentum goes to 0 at 0. 
+\end{enumerate}
+
+\subsection{Question 2.12: number density of neutrinos}
+Show that the number density of one generation of neutrinos and anti-neutrinos in the universe today is 
+\begin{align*}
+    n_{\nu_i} = \frac{3}{11} n_\gamma = 112 \text{ cm}^{-3}
+\end{align*}
+For this calculation, you will also have to compute the photon number density; both $n_{\nu_i}$ and $n_\gamma$ can be expressed in terms of Riemann zeta functions (Eq. (C.30)). Using this result, verify Eq. (2.84). 
+
+\textbf{Solution:}
+
+By definition, 
+\begin{align*}
+    n_s &= g_s \int \frac{d^3 p}{(2\pi)^3} f(\vec{x}, \vec{p}, t) \\
+    n_{\nu_i}&= 2 \int \frac{d^3 p }{(2\pi)^3} \frac{1}{e^{p/T} - 1} = 2 \frac{4\pi }{(2\pi)^3} T^3_{\nu_i}\int d(p/T_{\nu_i}) \frac{p^2/T^2_{\nu_i}}{e^{p/T} - 1} = \frac{T_{\nu_i}^3}{\pi^2} \Gamma(3) \zeta(3) \\
+    n_\gamma &= 2 \int \frac{d^3 p}{(2\pi)^3} \frac{1}{e^{p/T} + 1} = 2 \frac{4\pi}{(2\pi)^2} T^3 \int d(p/T) \frac{p^2/T^2}{e^{p/T} + 1 } = \frac{T^3}{\pi^2} (1- 2^{-2})\Gamma(3) \zeta(3)
+\end{align*}
+which implies 
+\begin{align*}
+    \frac{n_{\nu_i}}{n_\gamma} = \left(\frac{T_{\nu_i}}{T} \right)^3 \cdot \frac{4}{3} = \frac{3}{11}
+\end{align*}
+By the expression for $n_{\gamma}$, 
+\begin{align*}
+    n_{\gamma} = \frac{3 \cdot 1.202}{2 \cdot \pi^2} \cdot 2.726^3 \cdot 4.44^3 \text{ cm}^{-3} = 432 \text{ cm}^{-3}
+\end{align*}
+which gives the required result. Finally, 
+\begin{align*}
+    \sum_i m_{\nu_i} = \sum_i \frac{\rho_{\nu_i}}{n_{\nu_i}} = \sum_i \frac{11\rho_{\nu_i}}{3 n_\gamma} &= \frac{11}{3n_\gamma} \Omega_\nu \rho_{cr} \\
+    &= \frac{11\cdot 1.88 \cdot 10^{-29}}{3 \cdot 432} \text{ g} \cdot \Omega_b h^2 \\
+    &= 90 \text{ eV} \cdot \Omega_b h^2
+\end{align*}
+as desired. 
+
+\newpage
+\section{The fundamental equations of cosmology}
+\subsection{Question 3.4: the second Friedmann equation}
+Show that the space-space component of the Einstein equations in a Euclidean universe is 
+\begin{align*}
+    \frac{\ddot{a}}{a} + \frac{1}{2}\left(\frac{\dot{a}}{a}\right)^2 = - 4 \pi G \mathcal{P}
+\end{align*}
+where $\mathcal{P} = \delta^j_i T^i_j/3$ is the total pressure. Combine this with Eq. (3.12) to derive the \textit{second Friedmann equation}:
+\begin{align*}
+    \frac{\ddot{a}}{a} = -\frac{4\pi G}{3}(\rho + 3 \mathcal{P})
+\end{align*}
+
+\textbf{Solution:}
+
+The Einstein equation reads 
+\begin{align*}
+    G_{\mu\nu} = 8\pi G T_{\mu\nu}
+\end{align*}
+First, the LHS
+\begin{align*}
+    G_{ij} = R_{ij} - \frac{1}{2}g_{ij}R 
+\end{align*}
+in which 
+\begin{align*}
+    R_{ij} = \Gamma^\alpha_{ij, \alpha} - \Gamma^\alpha_{i\alpha, j} + \Gamma^\alpha_{\alpha\beta}\Gamma^\beta_{ij} - \Gamma^\alpha_{\beta j}\Gamma^\beta_{\alpha i}
+\end{align*}
+Recall that the metric is given by $g_{00} = -1, g_{0i} = 0, g_{ij} = \delta_{ij} a^2$. The Christoffel symbols are 
+\begin{align*}
+    \Gamma^\alpha_{ij} &= \frac{1}{2}g^{\alpha\beta}(g_{\beta i,j} + g_{\beta j, i} - g_{ij, \beta}) = -\frac{1}{2}\delta_{\alpha 0}(-g_{ij, 0}) = \delta_{\alpha 0} \delta_{ij}a\dot{a}\\
+    \Gamma^\alpha_{00} &= \frac{1}{2}g^{\alpha \beta} (g_{\beta 0, 0} + g_{\beta 0,0} - g_{00, \beta}) = 0 \\
+    \Gamma^0_{i0} &= \frac{1}{2}g^{0\beta}( g_{\beta i, 0} + g_{\beta 0, i} - g_{i0, \beta}) = 0 \\
+    \Gamma^i_{j0} &= \frac{1}{2}g^{i\beta} (g_{\beta j, 0} + g_{\beta 0, j} - g_{j0, \beta}) = \frac{1}{2a^2}g_{ij, 0} = \delta_{ij} \frac{\dot{a}}{a}
+\end{align*}
+which gives 
+\begin{align*}
+    R_{ij} = \delta_{ij} [a\ddot{a} + \dot{a}^2] - 0 + 3\frac{\dot{a}}{a}\delta_{ij}a\dot{a} - 2\delta_{ij}a\dot{a}\frac{\dot{a}}{a} = \delta_{ij} [a\ddot{a} + 2\dot{a}^2]
+\end{align*}
+We know from Eq. (3.9) that 
+\begin{align*}
+    R = 6 \left[ \frac{\ddot{a}}{a} + \left(\frac{\dot{a}}{a}\right)^2\right] 
+\end{align*}
+which finally gives the full expression for the LHS
+\begin{align*}
+    G_{ij} = \delta_{ij} [a\ddot{a} + 2\dot{a}^2] - \frac{1}{2}\delta_{ij}a^2\cdot 6 \left[ \frac{\ddot{a}}{a} + \left(\frac{\dot{a}}{a}\right)^2\right] = \delta_{ij} [-2a\ddot{a} - \dot{a}^2 ]
+\end{align*}
+Now, consider the RHS, 
+\begin{align*}
+    T_{ij} = g_{i\alpha}T^\alpha_j = g_{ik}T^k_j = \delta_{ik}a^2 T^k_j = a^2 T^i_j 
+\end{align*}
+Finally, we have 
+\begin{align*}
+    \delta_{ij}[-2a\ddot{a} - \dot{a}^2] &= 8\pi G a^2 T^i_j \\
+    \delta^j_i \delta_{ij} \left[ \frac{\ddot{a}}{a} + \frac{1}{2}\left(\frac{\dot{a}}{a}\right)^2 \right] &= -4\pi G \delta^j_i T^i_j \\ 
+    \frac{\ddot{a}}{a} + \frac{1}{2}\left(\frac{\dot{a}}{a}\right)^2 &= -4\pi G \mathcal{P}
+\end{align*}
+as desired. Eq. (3.12) states 
+\begin{align*}
+    \left( \frac{\dot{a}}{a}\right)^2 = \frac{8\pi G}{3} \rho 
+\end{align*}
+and direct substitution gives the much desired second Friedmann equation 
+\begin{align*}
+    \frac{\ddot{a}}{a} = - \frac{4\pi G}{3}(\rho + 3 \mathcal{P})
+\end{align*}
+
+\subsection{Question 3.10: collisionless Boltzmann equation for massive particles}
+Derive Eq. (3.76), the Boltzmann equation for a massive particle at linear order, from Eq. (3.75) 
+
+\textbf{Solution:}
+
+Eq. (3.75) gives the generalised Boltzmann equation in a perturbed spactime 
+\begin{align*}
+    \frac{df }{dt } &= \frac{\partial f}{\partial t} + \frac{\partial f}{\partial x^i} \frac{\hat{p}^i}{a}\frac{p}{E}(1 - \Phi + \Psi) - p\frac{\partial f}{\partial p} \left[ H + \dot{\Phi} + \frac{E}{ap } \hat{p}^i \Psi_{,i}\right] \\
+    &~~~~+ \frac{\partial f}{\partial \hat{p}} \frac{E}{ap} \left[ \left( \frac{p^2}{E^2}\Phi - \Psi \right)_{,i} - \hat{p}^i \hat{p}^k \left( \frac{p^2}{E^2}\Phi - \Psi \right)_{,k} \right]  
+\end{align*}
+Assume that the zeroth-order distribution function for massive particles is independent of $\vec{x}$ and $\hat{p}$ (as it should be in a smooth homogeneous universe). This means that the corresponding derivatives are, at best, first-order. This allows us to drop the $\Phi, \Psi$ dependence in the $x^i$ derivative and the entire $\hat{p}^i$ derivative, giving us 
+\begin{align*}
+    \frac{df }{dt } = \frac{\partial f}{\partial t} + \frac{\partial f}{\partial x^i} \frac{\hat{p}^i}{a}\frac{p}{E} - p \frac{\partial f}{\partial p}\left[ H + \dot{\Phi} + \frac{E}{ap }\hat{p}^i \Psi_{,i}\right] 
+\end{align*}
+Eq. (3.76), as desired. 
+
+\subsection{Question 3.11: temperature of non-interacting non-relativistic matter}
+Show that the temperature of nonrelativistic matter scales as $a^{-2}$ in the absence of interactions. Start from Eq. (3.38) and assume a form $f_c \propto e^{-(E - \mu)/T } \propto e^{-p^2/2mT}$. Justify this ansatz. Note that this argument does \textit{not} apply in the presence of interactions: for example, the temperature of electrons and photons scales as $a^{-1}$ as long as they are tightly coupled to the photons. 
+
+\textbf{Solution:}
+
+Eq. (3.38) gives the Boltzmann equation in the homogeneous expanding universe 
+\begin{align*}
+    \frac{\partial f}{\partial t} + \frac{\partial f}{\partial x^i}\frac{\hat{p}^i}{a}\frac{p}{E} -Hp \frac{\partial f}{\partial p} = C[f]
+\end{align*}
+In the absence of interactions, $C[f] = 0$. In a homogeneous universe, $\frac{\partial f}{\partial x^i} = 0$. So, 
+\begin{align*}
+    \frac{\partial f}{\partial t} = Hp \frac{\partial f}{\partial p} 
+\end{align*}
+The ansatz is justified in the large energy/low temperature limit, which results in the exponential term in either Fermi-Dirac or Bose-Einstein dominating the $\pm 1$ factor. We finally get, 
+\begin{align*}
+    e^{-p^2/2mT} \left(-\frac{p^2}{2m}\right) \frac{\partial T^{-1}}{\partial t} &= Hp e^{-p^2/2mT} \left(-\frac{1}{2mT}\right) 2p \\
+    -\frac{1}{T^2} \frac{\partial T}{\partial t} &= 2H\frac{1}{T} \\
+    \frac{\partial T}{\partial t} &= -2HT
+\end{align*}
+This is a first-order differential equation for which $T \propto a^{-2}$ is a solution (and hence the only solution). 
+
+\subsection{Question 3.13: spatial curvature in conformal Newtonian gauge}
+Show that the spatial curvature in conformal Newtonian gauge is equal to $4k^2\Phi/a^2$. To do this, compute the three-dimensional Ricci scalar arising from the spatial part of the metric $g_{ij}$ in Eq. (3.49).
+
+\textbf{Solution:}
+
+Consider any spatial slice of the metric. We now have $g_{ij} = \delta_{ij} a^2 (1+2\Phi(\vec{x}))$. Notice that we drop all time dependence. First, compute the Ricci tensor arising (exclusively) from $g_{ij}$. 
+\begin{align*}
+    R_{ij} = \Gamma^k_{ij,k} - \Gamma^k_{ik,j} + \Gamma^k_{ij}\Gamma^\ell_{k\ell} - \Gamma^k_{i\ell}\Gamma^\ell_{kj}
+\end{align*}
+Note that the $\Gamma^2$ terms are of 2nd order, so we drop them. 
+\begin{align*}
+    R_{ij} = (2\partial_i\partial_j - 3\delta_{ij}\partial_i\partial_j) \Phi -3 \partial_i \partial_j\Phi = -(1 + 3\delta_{ij}) \partial_i\partial_j \Phi 
+\end{align*}
+We contract with $g^{ij}$ to get the Ricci scalar 
+\begin{align*}
+    g^{ij}R_{ij} = \frac{\delta^{ij}(1-2\Phi)}{a^2 } R_{ij} = \frac{-1}{a^2}(\nabla^2 + 3 \nabla^2)\Phi = -\frac{4\nabla^2 \Phi}{a^2}
+\end{align*}
+which, in Fourier space, gives the desired answer. 
+
+\newpage 
+\section{The origin of species}
+\subsection{Question 4.1: number density in low and high temperature limits}
+Compute the equilibrium number density (i.e., with zero chemical potential) of a species with mass $m$ and degeneracy $g= 2$ in the limits of large and small $m/T$ for both bosons and fermions. You will find Eqs. (C.29) and (C.30) helpful for the high-T Bose-Einstein and Fermi-Dirac limits. 
+
+\textbf{Solution:}
+
+Eqs. (C.29) and (C.30) give expressions for the Riemann zeta function 
+\begin{align*}
+    \zeta(s) = \frac{1}{\Gamma(s)} \int_0^\infty dx \frac{x^{s-1}}{e^x - 1} &= \frac{1}{(1-2^{1-s})\Gamma(s)} \int_0^\infty dx \frac{x^{s-1}}{e^x + 1}  \\
+    \zeta(2) = \frac{\pi^2}{6}; ~~~~~~ \zeta(3) &= 1.202; ~~~~~ \zeta(4) = \frac{\pi^4}{90}
+\end{align*}
+The number density of a species $s$ is given by the integral of its distribution function over all momenta, multiplied by the degeneracy factor
+\begin{align*}
+    n_s = g_s \int \frac{d^3p}{(2\pi)^3} f(\vec{x}, \vec{p}, t) = 2 \int \frac{d^3p}{(2\pi)^3} \frac{1}{e^{E/T} \pm 1} 
+\end{align*}
+We know that $E = \sqrt{m^2 + p^2}$. In the limit of small $m/T$, see that 
+\begin{align*}
+    n_s = 2 \int \frac{d^3p}{(2\pi)^3} \frac{1}{e^{E/T} \pm 1}  &= 2 \frac{4\pi}{(2\pi)^3} \int dp \frac{p^2}{e^{p/T} \pm 1} = \frac{T^3}{\pi^2} \int d(p/T) \frac{p^2/T^2}{e^{p/T} \pm 1} \\
+    \implies n_s &= \frac{T^3}{\pi^2} \Gamma(3)\zeta(3) \tag{bosons} = 2 \frac{T^3}{\pi^2} \zeta(3) \\
+    &= \frac{T^3}{\pi^2 } (1 - 2^{-2}) \Gamma(3) \zeta(3) = \frac{3}{2} \frac{T^3}{\pi^2} \zeta(3) \tag{fermions}
+\end{align*}
+In the limit of large $m/T$, $E = m + \frac{p^2}{2m}$
+\begin{align*}
+    n_s = 2 \int \frac{d^3p}{(2\pi)^3} \frac{1}{e^{E/T} \pm 1}  &\approx 2 \frac{4\pi}{(2\pi)^3} \int dp p^2 e^{-m/T - p^2/2mT} \\
+    &= \frac{e^{-m/T}}{\pi^2} \int dp p^2e^{-p^2/2mT}
+\end{align*}
+Make a substitution $x = p/\sqrt{2mT} \implies dx = dp / \sqrt{2mT}$  
+\begin{align*}
+    n_s = \frac{e^{-m/T}}{\pi^2} (2mT)^{3/2} \int dx x^2 e^{-x^2} = \frac{e^{-m/T}}{\pi^2}(2mT)^{3/2} \frac{\sqrt{\pi}}{4} = 2e^{-m/T} \left( \frac{mT }{2\pi} \right)^2
+\end{align*}
+for both bosons and fermions. 
+
+\subsection{Question 4.3 (Incomplete)}
+Suppose that there were no baryon asymmetry so that the number density of baryons equaled that of anti-baryons. Determine the final relic density of (baryons + anti-baryons). At what temperature is this asymptotic value reached?
+
+\textbf{Solution:}
+
+\subsection{Question 4.6: ratio of baryons to photons}
+Determine $\eta_b$ in terms of $\Omega_b h^2$. Show that it is given by Eq. (4.10).
+
+\textbf{Solution:}
+
+We want to show Eq. (4.10) 
+\begin{align*}
+    \eta_b = \frac{n_b}{n_\gamma} = 6.0 \times 10^{-10} \left( \frac{\Omega_bh^2}{0.022}\right) 
+\end{align*}
+Note that the number density $n_b = \rho_b / m_p = \Omega_b \rho_{cr} / m_p$ where $m_p$ is the mass of the proton. We know that 
+\begin{align*}
+    \rho_{cr} &= 1.88 h^2 \times 10^{-29} \text{ g cm}^{-3} \\
+    m_p &= 1.67 \times 10^{-24} \text{ g}
+\end{align*}
+From question 2.12, we know that
+\begin{align*}
+    n_\gamma = 411 \text{ cm}^{-3}
+\end{align*}
+Putting the numbers together, we get
+\begin{align*}
+    \eta_b = \frac{1.88}{1.67 \cdot 411} \times 10^{-5} \Omega_b h^2 = 2.73 \times 10^{-8} \Omega_b h^2 
+\end{align*}
+as desired. 
+
+\newpage 
+\section{The inhomogenous universe: matter and radiation}
+\subsection{Question 5.1 (Incomplete)}
+The metric in synchronous gauge is 
+\begin{align*}
+    g_{00}(\vec{x},t) &= -1 \\
+    g_{0i}(\vec{x},t) &= 0 \\
+    g_{ij}(\vec{x},t) &= a^2(t) [\delta_{ij} + h_{ij}(\vec{x, t})]
+\end{align*}
+with perturbations in Fourier space given by 
+\begin{align*}
+    \Tilde{h}_{ij}(\vec{k} = k \hat{e}_z, t) = 
+    \begin{pmatrix}
+        -2\tilde{n}(\vec{k}, t) & 0 & 0 \\
+        0 & -2 \tilde{n}(\vec{k}, t) & 0 \\
+        0 & 0 & \tilde{h}(\vec{k}, t) + 4 \tilde{n}(\vec{k},t)
+    \end{pmatrix}
+\end{align*}
+In this exercise, we keep the Fourier-space tilde explicit. Here we have chosen the wavevector $\vec{k}$ to lie in the $z$-direction. Following the steps in Sect. 3.3, derive the equivalent of Eq. (5.35) in synchronous gauge: 
+\begin{align*}
+    \tilde{\Theta}' + ik \mu \tilde{\Theta }  + \frac{1}{2}\mu^2 \tilde{h}' + 2 \mathcal{P}_2(\mu)\tilde{n}' = - \tau' [\tilde{\Theta}_0 - \tilde{\Theta} + \mu u_b]
+\end{align*}
+
+\textbf{Solution:}
+
+Boltzmann equation given by 
+\begin{align*}
+    C[f] = \frac{\partial f}{\partial t} + \frac{\partial f}{\partial x^i} \frac{\partial x^i}{\partial t}  + \frac{\partial f}{\partial \hat{p}} \frac{\partial f}{\partial \hat{p}} + \frac{\partial f}{\partial p} \frac{\partial p }{\partial t}
+\end{align*}
+The mass-shell constraint for a particle with mass $m$ 
+\begin{align*}
+    g_{\mu\nu}P^\mu P^\nu = -1 (P^0)^2 + p^2 &= -m^2 \\
+    P^0 &= E
+\end{align*}
+where 
+\begin{align*}
+    p^2 &= g_{ij} P^i P^j \\
+    (p^i)^2 &= a^2 (t) [1 + h_{ii}(\vec{x}, t)](P^i)^2 \\
+    P^i &= \frac{p^i}{a\sqrt{1 + h_{ii}}}
+\end{align*}
+Now, check that 
+\begin{align*}
+    \frac{dx^i}{dt } &= \frac{dx^i }{d\lambda} \frac{d\lambda}{dt } \\
+    &= \frac{P^i}{P^0} = \frac{p^i}{aE \sqrt{1 + h_{ii}}}
+\end{align*}
+Now, we compute $dp^i/dt$. First, see that 
+\begin{align*}
+    \frac{dp^i}{d\lambda} &= \frac{d}{d\lambda} aP^i \sqrt{1+h_{ii}} \\
+    &= a \sqrt{1+h_{ii}} \frac{dP^i}{d\lambda} + P^i (\sqrt{1+h_{ii}} \dot{a} P^0 + \frac{a}{2\sqrt{1+h_{ii}}} \dot{h_{ii}} P^0 + )
+\end{align*}
+
+\subsection{Question 5.2}
+Start with the zeroth order unintegrated Boltzmann Eq. (5.5). Integrate this equation over all momenta to show that the number density falls off as $a^3$. 
+
+\textbf{Solution:}
+
+Eq. (5.5) gives
+\begin{align*}
+    \frac{df }{dt } \Big|_\text{zero order} = \frac{\partial f^{(0)}}{\partial t} - Hp \frac{\partial f^{(0)}}{\partial p} = 0 \\
+    \frac{\partial }{\partial t} \int \frac{d^3p }{(2\pi)^3} 
+\end{align*}
+
+\section{The inhomogenous universe: gravity}
+\subsection{Question 6.6 (Partially Incomplete)}
+Compute the time-space component of the Einstein equations. Show that, in Fourier space, the relevant component of the Einstein tensor is 
+\begin{align*}
+    G^0_i = 2i k_i \left( \frac{\Phi'}{a} - H \psi \right) 
+\end{align*}
+Combine with the energy-momentum tensor given in Eq. (3.86) to show that 
+\begin{align*}
+    \Phi' - aH \psi = \frac{4\pi G a^2}{ik} [ \rho_c u_c + \rho_b u_b - 4i \rho_\gamma \Theta_1 - 4i\rho_\nu \mathcal{N}_1]
+\end{align*}
+
+\textbf{Solution:}
+
+Note that 
+\begin{align*}
+    G^0_i = g^{0\mu}G_{\mu i} = -(1 + 2\psi) G_{0i} = -(1+2\psi)R_{0i}
+\end{align*}
+
+We know that 
+\begin{align*}
+    R_{0i} = \Gamma^\mu_{0i, \mu} - \Gamma^\mu_{0\mu, i} + \Gamma^\mu_{0i}\Gamma^\nu_{\mu\nu} - \Gamma^\mu_{0\nu}\Gamma^\nu_{i\mu}
+\end{align*}
+We have previously calculated the Christoffel symbols (calculate it yourself) for the scalar perturbed metric: 
+\begin{align*}
+    \Gamma^0_{00} = \dot{\psi}, ~~~ \Gamma^0_{0i} = \psi_{,i}, ~~~ \Gamma^0_{ij} = \delta_{ij} a^2 [H + 2H (\Phi - \psi)  + \dot{\Phi}] \\
+    \Gamma^i_{00} = \frac{\psi_{,i}}{a^2}, ~~~ \Gamma^i_{0j} = \Gamma^i_{j0} = \delta_{ij} (H + \dot{\Phi}), ~~~ \Gamma^i_{jk} = (\delta_{ij} \partial_k + \delta_{ik}\partial_j - \delta_{jk}\partial_i) \Phi 
+\end{align*}
+Then, 
+\begin{align*}
+    \Gamma^\mu_{0i, \mu} &= \Gamma^0_{0i, 0} + \Gamma^{j}_{0i, j} = \psi_{,i0} + (H+\dot{\Phi})_{,i} \\ 
+    &\approx \psi_{,i0} + \Phi_{,0i} \\
+    \Gamma^\mu_{0\mu, i} &= \Gamma^0_{00, i} + \Gamma^j_{0j, i} = \psi_{,0i} + 3(H + \dot{\Phi})_{,i} \\
+    &\approx \psi_{,0i} + 3\Phi_{, 0i} \\
+    \Gamma^\mu_{0i} \Gamma^\nu_{\mu\nu} &= \Gamma^0_{0i}\Gamma^0_{00} + \Gamma^j_{0i}\Gamma^k_{jk} + \Gamma^j_{0i}\Gamma^0_{j0} + \Gamma^0_{0i} \Gamma^j_{0j} \\
+    &= \dot{\psi}\psi_{,i} + \delta_{ij}(H + \dot{\Phi})(\delta_{kj}\partial_k + 3\partial_j - \delta_{jk}\partial_k)\Phi + \delta_{ij}(H + \dot{\Phi})\psi_{,j} + \psi_{,i}\cdot 3(H + \dot{\Phi}) \\
+    &\approx 3H \Phi_{,i} + H \psi_{,i} + 3H \psi_{,i} \\
+    &= H (4\psi_{,i } + 3\Phi_{,i}) \\
+    \Gamma^\mu_{0\nu}\Gamma^\nu_{i\mu} &= \Gamma^0_{00}\Gamma^0_{i0} + \Gamma^j_{00}\Gamma^0_{ij} + \Gamma^0_{0j}\Gamma^j_{i0} + \Gamma^j_{0k}\Gamma^k_{ij} \\
+    &= \dot{\psi}\psi_{,i} + \psi_{,j} \delta_{ij}[H + 2H (\Phi - \psi) + \dot{\Phi}] + \psi_{,j} \delta_{ij} (H + \dot{\Phi}) + \delta_{jk} (H + \dot{\Phi})(\delta_{ik}\partial_j + \delta_{kj}\partial_i - \delta_{ij}\partial_k)\Phi \\
+    &\approx 0 + H \psi_{,i} + H \psi_{,i}  + H(\partial_i + 3 \partial_i - \partial_i) \Phi \\
+    &=H( 2 \psi_{,i} + 3\Phi_{,i})
+\end{align*}
+Hence, we have 
+\begin{align*}
+    R_{0i} = -2 \Phi_{,0i} +2H\psi_{,i} 
+\end{align*}
+To switch to Fourier space, we replace all spatial derivatives as described by 5.28 in the text
+\begin{align*}
+    R_{0i} = 2ik_i(H \psi - \Phi_{,0})
+\end{align*}
+In conformal time, time derivatives acquire a factor of $\frac{1}{a}$, which finally gives, 
+\begin{align*}
+    G^0_i \approx 2ik_i (\frac{\Phi_{,0}}{a} - H \psi)
+\end{align*}
+Using the Einstein equation and the energy-momentum tensor given in Eq. (3.86), 
+\begin{align*}
+    G^0_i = 8 \pi G T^0_i 
+\end{align*}
+
+\subsection{Question 6.7: spatial component of Ricci tensor (Partially Incomplete)}
+Show that $R_{ij}$ is given by Eq. (6.27). 
+
+\textbf{Solution:}
+The spatial Ricci tensor is given by 
+\begin{align*}
+    R_{ij} &= \Gamma^\alpha_{ij, \alpha} - \Gamma^\alpha_{i\alpha, j} + \Gamma^\alpha_{ij} \Gamma^\beta_{\alpha\beta} - \Gamma^\alpha_{i\beta}\Gamma^\beta_{j\alpha} \\
+    &= (\Gamma^0_{ij,0} + \Gamma^k_{ij,k}) - (\Psi_{,ij} + \Gamma^k_{ik,j}) + (\Gamma^0_{ij}\Gamma^0_{00} + \Gamma^0_{ij}\Gamma^k_{0k}) - (\Gamma^0_{ik}\Gamma^k_{j0} + \Gamma^k_{i0}\Gamma^0_{jk}) \\
+    &=\delta_{ij}a^2 [(\frac{\ddot{a}}{a} + H^2)(2 \Phi - 2\Psi +1) + 2H\dot{\Phi} + \ddot{\Phi}]+ \Phi_{,ij} - \delta_{ij}\nabla^2 \Phi - \Psi_{,ij} \\
+    &~~~~- \delta_{ij} a^2H \dot{\Psi} + \delta_{ij}a^2H (H + 2H(\Phi - \Psi) + 2\dot{\Phi})
+\end{align*}
+where 
+\begin{align*}
+    \Gamma^0_{ij}\Gamma^0_{00} + \Gamma^0_{ij}\Gamma^k_{0k} &= \delta_{ij} a^2H \dot{\Psi} + \delta_{ij}3a^2H (H + 2H(\Phi - \Psi) + 2\dot{\Phi}) \\
+    \Gamma^0_{ik}\Gamma^k_{j0} + \Gamma^k_{i0}\Gamma^0_{jk} &= \delta_{ij}2a^2H[H + 2H(\Phi - \Psi) + 2\dot{\Phi}] \\
+    \Gamma^0_{ij,0} + \Gamma^k_{ij,k} &= \delta_{ij} (a\ddot{a} + \dot{a}^2 + 2(a\ddot{a} + \dot{a}^2)(\Phi - \Psi) + 2a\dot{a}(\dot{\Phi} - \dot{\Psi}) + \ddot{\Phi}) + 2\Phi_{,ij} - \delta_{ij}\nabla^2 \Phi  \\
+    &= \delta_{ij} a^2(\frac{\ddot{a}}{a} + H^2 + 2(\frac{\ddot{a}}{a} + H^2)(\Phi - \Psi) + 2H(\dot{\Phi} - \dot{\Psi}) + \ddot{\Phi}) + 2 \Phi_{,ij} - \delta_{ij}\nabla^2 \Phi \\
+    &= \delta_{ij}a^2 [(\frac{\ddot{a}}{a} + H^2)(2 \Phi - 2\Psi +1) + 2H(\dot{\Phi} - \dot{\Psi}) + \ddot{\Phi}]+ 2 \Phi_{,ij} - \delta_{ij}\nabla^2 \Phi  \\
+    \Psi_{,ij} + \Gamma^k_{ik,j} &= \Psi_{,ij} + \Phi_{,ij}
+\end{align*}
+Eqs. (3.53) to (3.56) in the text list out the Christoffel symbols for perturbed spacetime. 
+
+To get the spatial Ricci scalar, we contract the Ricci tensor with the metric 
+\begin{align*}
+    R = g^{ij}R_{ij} &= \frac{1}{a^2(t) \delta_{ij} (1+2\Phi)}R_{ij} \\
+    &= 3 \cdot \frac{1-2\Phi}{a^2} R_{ii} \\
+    &= 3 (1 - 2\Phi)\Bigg[ [(\frac{\ddot{a}}{a} + H^2)(2 \Phi - 2\Psi +1) + 2H\dot{\Phi} + \ddot{\Phi}]+ - \nabla^2 \Phi \\
+    &~~~~-\dot{\Psi} +  (H + 2H(\Phi - \Psi) + 2\dot{\Phi})\Bigg] + \nabla^2 \Phi - \nabla^2 \Psi \\
+    &= 3 \left[ (\frac{\ddot{a}}{a} + H^2)(1 - 2\Psi) + 2H \dot{\Phi} + \ddot{\Phi} - \nabla^2 \Phi - \dot{\Psi} + H - 2H\Psi + 2\dot{\Phi} \right] 
+\end{align*}
+
+
+
+\subsection{Question 6.8 (Partially Incomplete)}
+Fill in the blanks in the derivation of the tensor equation.
+\begin{enumerate}[(a)]
+    \item Show that $\Gamma^i_{jk}$ is given by Eq. (6.57) in the presence of tensor perturbations.
+    \item Show that the last term in Eq. (6.58) is given by Eq. (6.64) 
+\end{enumerate}
+
+\textbf{Solution: }
+\begin{enumerate}[(a)]
+    \item TODO 
+    \item The last term in Eq. (6.58) is $\Gamma^\alpha_{\beta j}\Gamma^\beta_{i\alpha}$ 
+    
+    We want to show Eq. (6.64), which states 
+    \begin{align*}
+        \Gamma^\alpha_{\beta j}\Gamma^\beta_{i\alpha} = 2 H^2 g_{ij}  + 2a^2 H h_{ij, 0}^{TT}
+    \end{align*}
+    We simply compute 
+    \begin{align*}
+        \Gamma^\alpha_{\beta j}\Gamma^\beta_{i\alpha} = \Gamma^0_{00}\Gamma^0_{i0} + \Gamma^k_{0 j}\Gamma^0_{ik} + \Gamma^0_{k j}\Gamma^k_{i0} + \Gamma^k_{\ell j}\Gamma^\ell_{i k}
+    \end{align*}
+    Look at equations (6.50) to (6.57) for the Christoffel symbols. Note that the first term is 0 and both Christoffel symbols in the last term are of first order, so we neglect the product. Then, 
+    \begin{align*}
+        \Gamma^\alpha_{\beta j}\Gamma^\beta_{i\alpha} &\approx \Gamma^k_{0 j}\Gamma^0_{ik} + \Gamma^0_{k j}\Gamma^k_{i0} \\
+        &= \left(\delta_{kj} + \frac{h_{kj,0}^{TT}}{2}\right)\left(Hg_{ik} + \frac{a^2 h_{ik,0}^{TT}}{2}\right) + 
+        \left(Hg_{kj} + \frac{a^2 h_{kj,0}^{TT}}{2}\right)\left(\delta_{ik}H + \frac{h_{ik,0}^{TT}}{2}\right) \\
+        &\approx \frac{h_{ij,0}^{TT}}{2}Hg_{ii} + \left(H + \frac{h_{jj,0}^{TT}}{2}\right)\left(Hg_{ij} + \frac{a^2 h_{ij,0}^{TT}}{2}\right) + \frac{h_{kj,0}^{TT}}{2}Hg_{ik} \\
+        &~~~~ +\left(H + \frac{h_{ii,0}^{TT}}{2}\right)\left(Hg_{ij} + \frac{a^2 h_{ij,0}^{TT}}{2}\right) + \frac{h_{ij,0}^{TT}}{2} Hg_{jj} + \frac{h_{ik,0}^{TT}}{2}Hg_{ik}
+    \end{align*}
+    Note that the sense in which $k$ is being used changes from the second line (until when it is an index that is summed over) to the third line (at which point it becomes a fixed index) 
+    
+    The latest expression looks like a mess but if we just collect the terms we want, things sort themselves out. In particular, we keep the zeroth and first order terms from the terms in parentheses, expand the rest of the metric terms as $g_{ab} = \delta_{ab}a^2 + h_{ab}^{TT}$, drop all the remaining second order terms and see that the $a \neq b$ delta contributions go to 0. This gives,
+    \begin{align*}
+        \Gamma^\alpha_{\beta j}\Gamma^\beta_{i\alpha} \approx 2H^2 g_{ij} + 2a^2 H h_{ij,0}^{TT} 
+    \end{align*}
+\end{enumerate}
+
+\newpage 
+\section{Initial conditions}
+\subsection{Question 7.1: inflation solves the flatness problem (Partially Incomplete)}
+Inflation also solves the \textit{flatness} problem. This is the question of why the energy density today is so close to critical.
+\begin{enumerate} [(a)]
+    \item Suppose that 
+    \begin{align*}
+        \Omega(t) = \frac{8\pi G\rho(t)}{3H^2(t)}
+    \end{align*}
+    is equal to 0.3 today, where $\rho$ counts the energy density in matter and radiation (ignore the cosmological constant). From Eq. (3.14), plot $\Omega(t) -1$ as a function of the scale factor. How close to 1 would $\Omega(t)$ have been back at the Planck epoch (assuming no inflation took place so that the scale factor at the Planck epoch was of order $10^{-32}$)? This fine tuning of the initial conditions is the flatness problem. If not for the fine tuning, an open universe would be \textit{obviously} open (i.e., $\Omega$ would be almost exactly zero today); a closed universe would have recollapsed at very early times. 
+    \item Now show that inflation solves the flatness problem. Extrapolate $\Omega(t) - 1$ back to the end of inflation, and then through 60 $e$-folds of inflation. What is $\Omega(t) -1$ right before these 60 $e$-folds of inflation? This shows how inflation ``flattens'' space (see Fig. 7.4). 
+\end{enumerate}
+
+\textbf{Solution:}
+\begin{enumerate} [(a)]
+    \item Eq. (3.14) gives the first Friedmann equation 
+    \begin{align*}
+        \frac{H^2(t)}{H_0^2} = \sum_{s=r,m,\nu,DE} \Omega_s[a(t)]^{-3(1+w_s)} + \Omega_K[a(t)]^{-2}
+    \end{align*}
+    Recall that the equation of state for matter is $w_m = 0$ and for radiation is $w_r = \frac{1}{3}$. Then, 
+    \begin{align*}
+        3H^2(t) = 8\pi G \rho_{cr} \left[ \Omega_ma^{-3} + \Omega_r a^{-4} + \Omega_K a^{-2}\right] 
+    \end{align*}
+    which gives 
+    \begin{align*}
+        \Omega(t) &= \frac{\rho(t)}{\rho_{cr} [\Omega_m a^{-3} + \Omega_ra^{-4} + \Omega_Ka^{-2}]} = \frac{\Omega_ma^{-3} + \Omega_ra^{-4}}{\Omega_m a^{-3} + \Omega_r a^{-4} + \Omega_K a^{-2}} \\
+        \Omega(t) -1 &= - \frac{\Omega_Ka^{-2}}{\Omega_m a^{-3} + \Omega_r a^{-4} +\Omega_K a^{-2}}
+    \end{align*}
+    First, note that by definition, 
+    \begin{align*}
+        \Omega_m + \Omega_r + \Omega_K = 1 
+    \end{align*}
+    Then, at $t = t_0$, $a = 1$, we have 
+    \begin{align*}
+        \Omega_K = 0.7
+    \end{align*}
+    At $a \sim 10^{-32}$, then 
+    \begin{align*}
+        \Omega(t) - 1 = - 10^{-64}\frac{0.7}{\Omega_m \times 10^{-32} + \Omega_r \times 10^{-64} + 0.7} \approx -10^{-64}
+    \end{align*}
+    
+\end{enumerate}
+
+\subsection{Question 7.4: energy-momentum tensor for canonical scalar field}
+Derive the energy-momentum tensor for a canonical scalar field, whose Lagrangian is given by
+\begin{align*}
+    \mathcal{L}_\phi = - \frac{1}{2}g^{\mu\nu} \frac{\partial \phi}{\partial x^\mu} \frac{\partial \phi}{\partial x^\nu} - V(\phi)
+\end{align*}
+Recall that the Lagrangian is given by the difference of kinetic energy and potential energies, and that, since $g^{00} < 0$, we need a minus sign for the kinetic energy. The energy-momentum tensor is obtained by varying the action with respect to the metric: 
+\begin{align*}
+    T_{\mu\nu} = -2\frac{\delta \mathcal{L}_\phi}{\delta g^{\mu\nu}} + g_{\mu\nu} \mathcal{L}_\phi 
+\end{align*}
+* There is an error in the second formula in the text. The formulation above is correct. 
+
+\textbf{Solution:}
+
+Compute
+\begin{align*}
+    T_{\mu\nu} = \frac{\partial \phi}{\partial x^\mu} \frac{\partial \phi}{\partial x^\nu} + g_{\mu\nu} \left( -\frac{1}{2}g^{\alpha \beta} \frac{\partial \phi}{\partial x^\alpha} \frac{\partial \phi}{\partial x^\beta} - V(\phi)\right) 
+\end{align*}
+Then, 
+\begin{align*}
+    T^\mu_{\nu} = g^{\mu\gamma}T_{\gamma\nu} = g^{\mu\gamma} \frac{\partial \phi}{\partial x^\gamma} \frac{\partial \phi}{\partial x^\nu} - \delta^\mu_\nu \left( \frac{1}{2}g^{\alpha \beta} \frac{\partial \phi}{\partial x^\alpha} \frac{\partial \phi}{\partial x^\beta} + V(\phi)\right)
+\end{align*}
+
+\textbf{Alternative Solution:}
+
+Define the action
+\begin{align*}
+    S := \int d^4 x \sqrt{-g} \mathcal{L}
+\end{align*}
+The energy-momentum tensor is given by (references Wald E.1.26, Caroll 4.75, Tong QFT1 1.48)
+\begin{align*}
+    T_{\mu\nu} &= \frac{-2}{\sqrt{-g}} \frac{\delta S}{\delta g^{\mu\nu}} \\
+    &=  \frac{-2}{\sqrt{-g}} \left[ \frac{\sqrt{-g} (-\partial_\mu\phi\partial_\nu\phi)}{2} + \sqrt{-g} \left(\frac{-g^{\mu\nu}}{2}\right)\left(-\frac{g_{\alpha\beta} \partial_\alpha \phi \partial_\beta \phi}{2} - V(\phi) \right) \right] \\
+    &= \frac{\partial \phi}{\partial x^\mu} \frac{\partial \phi}{\partial x^\nu} - g^{\mu\nu} \left(\frac{1}{2}g_{\alpha\beta} \frac{\partial \phi}{\partial x^\alpha} \frac{\partial \phi }{\partial x^\beta} + V(\phi)\right) 
+\end{align*}
+Note that we also used Caroll 4.69. Now, proceed in the same manner as before.
+
+\subsection{Question 7.5: change of variables $t$ to $\eta$}
+Show that Eq. 7.15 follows from Eq. 7.14 by changing variables from $t$ to $\eta$. 
+
+\textbf{Solution:}
+
+We know that $\eta = \frac{t}{a(t)} \implies dt = a(t) d\eta$. 
+
+Check that 
+\begin{align*}
+    \dot{\phi} = \frac{d\phi}{dt} = \frac{d}{d\eta} \frac{d\eta}{dt} \phi = \frac{1}{a}\phi'
+\end{align*}
+\begin{align*}
+    \ddot{\phi} = \frac{d}{dt} \left( \frac{1}{a}\phi'\right) = -\frac{\dot{a}}{a^2} \phi' + \frac{1}{a^2}\phi'' = -\frac{1}{a}H\phi' + \frac{1}{a^2}\phi''
+\end{align*}
+
+It is straightforward then to see that 
+\begin{align*}
+    \ddot{\phi} + 3H \dot{\phi} + V_{, \phi}(\phi) = \frac{1}{a^2}\phi'' - \frac{1}{a}H\phi' + \frac{3}{a}H\phi' + V_{,\phi} (\phi) 
+\end{align*} 
+which gives 
+\begin{align*}
+    \phi'' + 2aH\phi' + a^2 V_{,\phi} = 0
+\end{align*}
+
+\subsection{Question 7.8 (Partially Incomplete)}
+Express the slow-roll parameters $\epsilon_{SR}$ and $\delta_{SR}$ in terms of the potential $V$ and its derivatives with respect to $\phi$. Show that, to lowest order, 
+\begin{align*}
+    \epsilon_{SR} = \frac{1}{16\pi G} \left( \frac{V_{,\phi}}{V}\right)^2 
+\end{align*}
+and 
+\begin{align*}
+    \delta_{SR} = \epsilon_{SR} - \frac{1}{8\pi G}\frac{V_{, \phi \phi}}{V}
+\end{align*}
+where the derivatives of the potential are evaluated at $\bar{\phi}$. 
+
+\textbf{Solution:}
+
+We will use the 1st and 2nd Friedmann equations, along with the equation of motion for $\phi$. They are
+\begin{align*}
+    3H^2 &= 8\pi G \rho \\
+    \frac{\ddot{a}}{a} &= -\frac{4\pi G}{3}(\rho + 3\mathcal{P}) \\
+    \ddot{\phi} + 3H\dot{\phi} + V_{,\phi}(\phi) &= 0 
+\end{align*}
+We have the expressions for $\rho$ and $\mathcal{P}$
+\begin{align*}
+    \rho &= \frac{1}{2}\dot{\phi}^2 + V(\phi) =: K+V\\
+    \mathcal{P} &= \frac{1}{2}\dot{\phi}^2- V(\phi) =: K-V
+\end{align*}
+The slow-roll regime is defined by $K \ll V$ and $|\ddot{\phi}| \ll H \dot{\phi}$. Then, 
+
+\section{Growth of structure: linear theory}
+\subsection{Question 8.1 (Incomplete)}
+Derive Eqs. (8.10) and (8.11). 
+\begin{enumerate} [(a)]
+    \item Show that, in the limit of small baryon density, the scattering term in Eq. (5.67), the one proportional to $\tau'$, can be neglected: first, drop $\Pi$, since the quadrupole and polarization are very small. Then, show that the scattering term is proportional to the baryon-to-photon energy ratio $R$ defined in Eq. (5.74). You will want to use Eq. (5.72). Again, this series of approximations is valid only for the purposes of this chapter, wherein we are interested in the matter distribution. 
+    \item Neglect the scattering term in Eq. (5.67), show that this collisionless equation reduces to the two equations for the monopole and dipole. To get the monopole equation, multiply Eq. (5.73) by $\mathcal{P}_0(\mu) = 1$ and integrate over $d\mu/2$. To get the dipole, multiply by $\mathcal{P}_1(\mu)$ and integrate. 
+\end{enumerate}
+
+\textbf{Solution:}
+\begin{enumerate} [(a)]
+    \item Eq. (5.67) gives the Boltzmann equation for photons 
+    \begin{align*}
+        \Theta' + ik\mu \Theta = - \Phi' - ik\mu \Psi - \tau' \left[ \Theta_0 - \Theta + \mu u_b - \frac{1}{2}\mathcal{P}_2(\mu) \Pi\right] 
+    \end{align*}
+    Eq. (5.72) gives the equation for baryon velocity 
+    \begin{align*}
+        u_b' + \frac{a'}{a}u_b = -ik\Psi  + \frac{\tau'}{R}[u_b + 3i\Theta_1]
+    \end{align*}
+    Eq. (5.74) defines $R$ 
+    \begin{align*}
+        R(\eta) := \frac{3\rho_b(\eta)}{4\rho_\gamma(\eta)}
+    \end{align*}
+\end{enumerate}
+
+\end{document}  
